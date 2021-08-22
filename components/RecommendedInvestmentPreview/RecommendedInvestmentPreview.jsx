@@ -2,6 +2,7 @@ import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { View, Image, Text } from "react-native";
+import { COLORS } from "../../constants/Colors";
 import AppButton from "../AppButton/AppButton";
 import { styles } from "./styles";
 
@@ -36,11 +37,10 @@ export default function RecommendedInvestmentPreview({ customStyles }) {
                 backgroundColor: "#ffffff",
               }}
               textStyle={{
-                fontFamily: "FiraCode-Regular",
                 textTransform: "capitalize",
                 fontWeight: "400",
                 fontSize: 12,
-                color: "#cd9931",
+                color: COLORS.tint,
               }}
             />
             <AppButton
@@ -48,7 +48,6 @@ export default function RecommendedInvestmentPreview({ customStyles }) {
               title="View Details"
               customStyle={styles.recommenedCardFooterBtn}
               textStyle={{
-                fontFamily: "FiraCode-Regular",
                 textTransform: "capitalize",
                 fontWeight: "400",
                 fontSize: 12,

@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/core";
 import React, { useEffect, useState } from "react";
 import { View, Image, Text, TouchableOpacity, ScrollView } from "react-native";
 import AppButton from "../../components/AppButton/AppButton";
+import { COLORS } from "../../constants/Colors";
 
 import { styles } from "./styles";
 
@@ -54,7 +55,7 @@ const Investment = () => {
                 textTransform: "capitalize",
                 fontWeight: "400",
                 fontSize: 12,
-                color: "#cd9931",
+                color: COLORS.tint,
               }}
             />
           </View>
@@ -75,7 +76,7 @@ const Investment = () => {
                 textTransform: "capitalize",
                 fontWeight: "400",
                 fontSize: 12,
-                color: "#cd9931",
+                color: COLORS.tint,
               }}
             />
           </View>

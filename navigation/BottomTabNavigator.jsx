@@ -1,4 +1,4 @@
-import { AntDesign, Ionicons } from "@expo/vector-icons";
+import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/core";
@@ -8,8 +8,12 @@ import useColorScheme from "../hooks/useColorScheme";
 import Home from "../screens/Home/Home";
 import Profile from "../screens/Profile/Profile";
 import Notification from "../screens/Notification/Notification";
+import Communication from "../screens/Communication/Communication";
+import ReportBug from "../screens/ReportBug/ReportBug";
+import GiveFeedback from "../screens/GiveFeedback/GiveFeedback";
 import EditProfile from "../screens/EditProfile/EditProfile";
 import { Text, View } from "../components/Themed/Themed";
+import Packages from "../screens/Packages/Packages";
 import Investment from "../screens/Investment/Investment";
 import About from "../screens/About/About";
 
@@ -33,6 +37,9 @@ export default function BottomTabNavigator() {
       case "Notification":
         return false;
         break;
+      case "Communication":
+        return false;
+        break;
       case "About":
         return false;
         break;
@@ -43,39 +50,35 @@ export default function BottomTabNavigator() {
   }
   return (
     <BottomTab.Navigator
-      screenOptions={{ headerShown: false }}
-      initialRouteName="Home"
-      tabBarOptions={{
-        style: {
-          elevation: 0, // for Android
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {
+          height: 60,
+          elevation: 10, // for Android
+          borderTopWidth: 0,
+          position: "absolute",
+          borderRadius: 50,
+          justifyContent: "center",
+          alignItems: "center",
+          // marginTop: -50,
+          marginBottom: 10,
+          marginHorizontal: 10,
+          borderTopColor: "transparent",
+          shadowColor: "transparent",
+          shadowOpacity: 0,
           shadowOffset: {
-            width: 0,
-            height: 0, // for iOS
+            height: 0,
           },
+          shadowRadius: 0,
         },
-        activeTintColor: Colors[colorScheme].tint,
-        inactiveTintColor: "#b3b4b6",
-        keyboardHidesTabBar: true,
+        tabBarHideOnKeyboard: true,
+        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarInactiveTintColor: "#b3b4b6",
       }}
-      // tabBarOptions={{
-
-      //   style: {
-      //     height: 90,
-      //     borderTopWidth: 0,
-      //     borderTopColor: "transparent",
-      //     elevation: 0,
-      //     shadowColor: "#5bc4ff",
-      //     shadowOpacity: 0,
-      //     shadowOffset: {
-      //       height: 0,
-      //     },
-      //     shadowRadius: 0,
-      //   },
-
-      // }}
+      initialRouteName="HomeScreen"
     >
       <BottomTab.Screen
-        name="Home"
+        name="HomeScreen"
         component={HomeScreenNavigator}
         options={({ route }) => ({
           tabBarVisible: getTabBarVisible(route),
@@ -105,7 +108,7 @@ export default function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="packages"
+        name="PackagesScreen"
         component={PackageScreenNavigator}
         options={({ route }) => ({
           tabBarVisible: getTabBarVisible(route),
@@ -124,6 +127,36 @@ export default function BottomTabNavigator() {
                 }}
               >
                 Packages
+              </Text>
+            ),
+          tabBarIcon: ({ color, focused }) =>
+            focused ? (
+              <MaterialIcons name="explore" size={33} color={color} />
+            ) : (
+              <AntDesign name="find" size={24} color={color} />
+            ),
+        })}
+      />
+      <BottomTab.Screen
+        name="InvestmentScreen"
+        component={InvestmentScreenNavigator}
+        options={({ route }) => ({
+          tabBarVisible: getTabBarVisible(route),
+          tabBarLabel: ({ focused }) =>
+            focused && (
+              <Text
+                position="right"
+                style={{
+                  color: COLORS.tint,
+                  fontSize: 9,
+                  fontWeight: "bold",
+                  letterSpacing: 1,
+                  marginTop: -10,
+                  marginBottom: 5,
+                  textTransform: "uppercase",
+                }}
+              >
+                Investments
               </Text>
             ),
           tabBarIcon: ({ color, focused }) =>
@@ -189,6 +222,27 @@ function HomeScreenNavigator() {
           headerShown: false,
         }}
       />
+      <ScreenStack.Screen
+        name="Communication"
+        component={Communication}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <ScreenStack.Screen
+        name="ReportBug"
+        component={ReportBug}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <ScreenStack.Screen
+        name="GiveFeedback"
+        component={GiveFeedback}
+        options={{
+          headerShown: false,
+        }}
+      />
     </ScreenStack.Navigator>
   );
 }
@@ -197,19 +251,33 @@ function PackageScreenNavigator() {
   return (
     <ScreenStack.Navigator>
       <ScreenStack.Screen
-        name="Products"
-        component={Products}
+        name="Packages"
+        component={Packages}
         options={{
           headerShown: false,
         }}
       />
       {/* <ScreenStack.Screen
-        name="ProductView"
-        component={ProductView}
+        name="PackageView"
+        component={PackageView}
         options={{
           headerShown: false,
         }}
       /> */}
+    </ScreenStack.Navigator>
+  );
+}
+function InvestmentScreenNavigator() {
+  return (
+    <ScreenStack.Navigator>
+      <ScreenStack.Screen
+        name="Investments"
+        component={Investment}
+        component={Investment}
+        options={{
+          headerShown: false,
+        }}
+      />
     </ScreenStack.Navigator>
   );
 }

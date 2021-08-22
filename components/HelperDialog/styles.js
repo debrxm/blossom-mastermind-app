@@ -45,7 +45,6 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
     marginLeft: -2,
     marginBottom: 1,
-    fontFamily: "FiraCode-SemiBold",
     textAlign: "center",
   },
 

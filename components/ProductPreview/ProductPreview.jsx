@@ -2,6 +2,7 @@ import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { View, Image, Text } from "react-native";
+import { COLORS } from "../../constants/Colors";
 import AppButton from "../AppButton/AppButton";
 import { styles } from "./styles";
 
@@ -18,10 +19,10 @@ export default function ProductPreview({ data, customStyles }) {
           <Text style={styles.planText}>ROI: {data.roi}%</Text>
         </View>
         <View style={styles.productCardImageContainer}>
-          <Image
+          {/* <Image
             style={styles.productCardImage}
             source={require("../../assets/logos/bb.png")}
-          />
+          /> */}
         </View>
         <View style={styles.cardInfo}>
           <Text style={styles.cardInfoName}>{data.package}</Text>
@@ -40,11 +41,10 @@ export default function ProductPreview({ data, customStyles }) {
                 backgroundColor: "#ffffff",
               }}
               textStyle={{
-                fontFamily: "FiraCode-Regular",
                 textTransform: "capitalize",
                 fontWeight: "400",
                 fontSize: 12,
-                color: "#cd9931",
+                color: COLORS.tint,
               }}
             />
             <AppButton
@@ -52,7 +52,6 @@ export default function ProductPreview({ data, customStyles }) {
               title="View Details"
               customStyle={styles.productCardFooterBtn}
               textStyle={{
-                fontFamily: "FiraCode-Regular",
                 textTransform: "capitalize",
                 fontWeight: "400",
                 fontSize: 12,

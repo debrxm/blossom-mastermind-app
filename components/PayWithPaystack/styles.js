@@ -74,7 +74,6 @@ export const styles = StyleSheet.create({
     fontSize: 14,
   },
   btnText: {
-    fontFamily: "FiraCode-Regular",
     fontSize: 14,
   },
   btnStyle: {

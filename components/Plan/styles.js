@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../constants/Colors";
 
 export const styles = StyleSheet.create({
   productCard: {
@@ -22,7 +23,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#cd9931",
+    backgroundColor: COLORS.tint,
     borderRadius: 15,
     elevation: 3,
   },
@@ -40,7 +41,6 @@ export const styles = StyleSheet.create({
   },
   cardInfoName: {
     color: "#97989A",
-    fontFamily: "FiraCode-SemiBold",
     fontSize: 16,
     marginVertical: 10,
   },
@@ -52,12 +52,10 @@ export const styles = StyleSheet.create({
   detailsLightText: {
     fontSize: 10,
     color: "#97989A",
-    fontFamily: "FiraCode-SemiBold",
   },
   detailsBoldText: {
     fontSize: 14,
     color: "#353535",
-    fontFamily: "FiraCode-Regular",
   },
   amount: {
     justifyContent: "center",

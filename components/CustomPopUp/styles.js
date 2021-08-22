@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-    fontFamily: "FiraCode-SemiBold",
     fontSize: 13,
   },
 });

@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     alignItems: "center",
-    paddingTop: 40,
+    paddingTop: 50,
     paddingBottom: 15,
     paddingLeft: 20,
     paddingRight: 20,

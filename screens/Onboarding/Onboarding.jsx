@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from "react-native";
+import { Width } from "../../constants/Layout";
 import { styles } from "./styles";
 const { width, height } = Dimensions.get("window");
 
@@ -18,20 +19,23 @@ const slides = [
   {
     id: "1",
     image: require("../../assets/images/illustration_1.png"),
-    title: "Your No1 Investment App",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    title: "Your No.1 Investment Partner",
+    subtitle:
+      "Blossom Mastermind International is an invesment & wellness company that is into health products and food supplements",
   },
   {
     id: "2",
     image: require("../../assets/images/illustration_2.png"),
     title: "Increase Your Value",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    subtitle:
+      "BMI limited is here to help you generate passive income that could last you a lifetime while you thrive in your chosen business and career.",
   },
   {
     id: "3",
     image: require("../../assets/images/illustration_3.png"),
     title: "Achieve Your Goals",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    subtitle:
+      "We are gift financial wellness, and financial freedom plan is achieved effortlessly with us as your partner",
   },
 ];
 
@@ -42,7 +46,7 @@ const Slide = ({ item }) => {
         source={item?.image}
         style={{ height: "55%", width, resizeMode: "contain" }}
       />
-      <View>
+      <View style={{ width: Width, alignItems: "center" }}>
         <Text style={styles.title}>{item?.title}</Text>
         <Text style={styles.subtitle}>{item?.subtitle}</Text>
       </View>

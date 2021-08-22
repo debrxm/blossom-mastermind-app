@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../constants/Colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -10,7 +11,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     alignItems: "center",
-    paddingTop: 40,
+    paddingTop: 50,
     paddingBottom: 15,
     paddingLeft: 20,
     paddingRight: 20,
@@ -25,17 +26,15 @@ export const styles = StyleSheet.create({
   },
   orgName: {
     textTransform: "uppercase",
-    color: "#D4AF37",
+    color: COLORS.tint,
     textAlign: "center",
-    fontSize: 16,
+    fontSize: 17,
+    marginVertical: 5,
   },
   descriptionText: {
-    textAlign: "center",
     color: "#a6a5a2",
-    marginVertical: 10,
-    fontSize: 13,
-    lineHeight: 30,
-    paddingVertical: 10,
+    fontSize: 14,
+    lineHeight: 25,
   },
   readmore: {
     marginTop: "auto",
@@ -44,10 +43,11 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 20,
+    paddingBottom: 90,
   },
   readmoreText: {
     backgroundColor: "#ffffff",
-    color: "#D4AF37",
+    color: COLORS.tint,
     fontSize: 14,
   },
 });

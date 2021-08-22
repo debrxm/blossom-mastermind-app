@@ -1,4 +1,12 @@
-import { AntDesign, Feather, FontAwesome5, Ionicons } from "@expo/vector-icons";
+import {
+  AntDesign,
+  Entypo,
+  Feather,
+  FontAwesome5,
+  Ionicons,
+  MaterialIcons,
+  Octicons,
+} from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -122,15 +130,17 @@ const Profile = () => {
       <View style={styles.container}>
         <View style={styles.userPreview}>
           <View style={styles.userImageContainer}>
+            <Ionicons name="person-circle" size={100} color="#dddcdb" />
             {/* <Image style={styles.userImage} source={avatar} /> */}
           </View>
           <View style={styles.usernameContainer}>
             <Text
               style={styles.username}
             >{`${user.first_name} ${user.last_name}`}</Text>
+            <Text style={styles.username}>{user.phone}</Text>
           </View>
         </View>
-        <View style={styles.invest}>
+        {/* <View style={styles.invest}>
           <AppButton
             onPress={() => navigation.navigate("Investments")}
             title="Your Investments"
@@ -157,8 +167,8 @@ const Profile = () => {
               color: colors[0],
             }}
           />
-        </View>
-        <View style={styles.money}>
+        </View> */}
+        {/* <View style={styles.money}>
           <TouchableOpacity onPress={() => navigation.navigate("Wallet")}>
             <View style={styles.wallet}>
               <Text style={styles.moneyLightText}>My Balance</Text>
@@ -171,35 +181,42 @@ const Profile = () => {
               <Text style={styles.moneyBoldText}>{`₦ ${"00.00"}`}</Text>
             </View>
           </TouchableOpacity>
-        </View>
+        </View> */}
 
         <View style={styles.settings}>
           <SettingsItemWrapper
             title={"About the company"}
-            icon={<AntDesign name="infocirlceo" size={20} color={colors[0]} />}
+            icon={
+              <Entypo name="info-with-circle" size={20} color={colors[0]} />
+            }
             onPress={() => navigation.navigate("About")}
           />
           <SettingsItemWrapper
+            title={"Comunucation"}
+            icon={<Ionicons name="mail" size={20} color={colors[0]} />}
+            onPress={() => navigation.navigate("Communication")}
+          />
+          <SettingsItemWrapper
+            title={"Give Feedback"}
+            icon={<MaterialIcons name="message" size={20} color={colors[0]} />}
+            onPress={() => navigation.navigate("GiveFeedback")}
+          />
+          <SettingsItemWrapper
+            title={"Bug Report"}
+            icon={<Entypo name="bug" size={20} color={colors[0]} />}
+            onPress={() => navigation.navigate("ReportBug")}
+          />
+          <SettingsItemWrapper
             title={"Share the app"}
-            icon={<Feather name="share-2" size={20} color={colors[0]} />}
+            icon={<Ionicons name="md-share" size={20} color={colors[0]} />}
             onPress={onShare}
           />
         </View>
         <View style={styles.invite}>
-          <View style={styles.icon}>
-            <FontAwesome5 name="share-alt" size={20} color={colors[0]} />
-          </View>
-          <View style={styles.inviteTexts}>
-            <Text style={styles.inviteTextMain}>
-              Invite your friends and earn
-            </Text>
-            <Text style={styles.inviteTextSub}>
-              your refaral code:{" "}
-              <Text style={styles.inviteTextBold}>
-                {user.refer_code || "HU6Y5"}
-              </Text>
-            </Text>
-          </View>
+          <Text style={styles.inviteTextMain}>Blossom Mastermind</Text>
+          <Text style={styles.inviteTextSub}>Version 1.0.0</Text>
+          <Text style={styles.inviteTextSub}>From</Text>
+          <Text style={styles.inviteTextBold}>{user.refer_code || "XEAM"}</Text>
         </View>
       </View>
     </>

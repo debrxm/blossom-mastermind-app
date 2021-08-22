@@ -30,20 +30,35 @@ const About = () => {
         // contentContainerStyle={styles.contentContainer}
         style={styles.container}
       >
-        <Text style={styles.orgName}>Boundless muilti-services</Text>
-        <Text style={styles.orgName}>solutions Nigeria ltd</Text>
-        <Text style={styles.descriptionText}>
-          is a Real Estate and Project Management company with primary
-          commitment in land/property development, real estate investment and
-          brokerage services. Our interest to offer excellent services in the
-          real estate industry is second to none as we provide professional and
-          flexible service to our streams of customers both in Nigeria and
-          outside the country
+        <Text style={styles.orgName}>Blossom Mastermind</Text>
+        <Text style={[styles.orgName, { marginBottom: 20 }]}>
+          International Nigeria ltd
         </Text>
-        <Image source={logo} style={{ flex: 1, width: "100%" }} />
+        <Text style={styles.descriptionText}>
+          Blossom Mastermind International is an invesment & wellness company
+          that is into health products and food supplements
+        </Text>
+        <Text style={styles.descriptionText}>
+          BMI limited is here to help you generate passive income that could
+          last you a lifetime while you thrive in your chosen business and
+          career.
+        </Text>
+        <Text style={styles.descriptionText}>
+          We are gift financial wellness, and financial freedom plan is achieved
+          effortlessly with us as your partner
+        </Text>
+        <Image
+          source={logo}
+          style={{
+            marginTop: "auto",
+            flex: 0.7,
+            width: "100%",
+            resizeMode: "contain",
+          }}
+        />
       </View>
       <TouchableOpacity
-        onPress={() => Linking.openURL("https://www.boundlessservicesng.com/")}
+        onPress={() => Linking.openURL("https://www.blossommastermind.com/")}
         style={styles.readmore}
       >
         <Text style={styles.readmoreText}>READ MORE</Text>

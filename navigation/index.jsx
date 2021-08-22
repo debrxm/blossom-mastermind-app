@@ -12,7 +12,6 @@ import BottomTabNavigator from "./BottomTabNavigator";
 import Register from "../screens/Register/Register";
 import Login from "../screens/Login/Login";
 import ForgotPassword from "../screens/ForgotPassword/ForgotPassword";
-import { StatusBar } from "react-native";
 
 function Navigation({ colorScheme }) {
   // const { user } = useSelector(({ Auth }) => Auth);

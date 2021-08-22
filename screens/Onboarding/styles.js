@@ -6,9 +6,11 @@ export const styles = StyleSheet.create({
     color: COLORS.darkTextColor,
     fontSize: 13,
     marginTop: 10,
-    maxWidth: "70%",
+    maxWidth: "90%",
     textAlign: "center",
     lineHeight: 23,
+    flexWrap: "wrap",
+    flexShrink: 1,
   },
   title: {
     color: COLORS.darkTextColor,

@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     alignItems: "center",
-    paddingTop: 40,
+    paddingTop: 50,
     paddingBottom: 15,
     paddingLeft: 20,
     paddingRight: 10,
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingTop: 30,
-    paddingBottom: 20,
+    // paddingBottom: 20,
   },
   userImage: {
     width: 110,
@@ -40,8 +40,8 @@ export const styles = StyleSheet.create({
     borderColor: "#cd9931",
   },
   usernameContainer: {
-    flexDirection: "row",
-    alignItems: "flex-start",
+    // flexDirection: "row",
+    // alignItems: "flex-start",
   },
   username: {
     color: "#42414C",
@@ -66,6 +66,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     paddingVertical: 10,
+    marginBottom: 20,
   },
   investBtn: {
     height: 35,
@@ -96,15 +97,14 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   invite: {
-    flexDirection: "row",
+    // flexDirection: "row",
     alignItems: "center",
     alignItems: "center",
-    backgroundColor: "#dddcdb",
     borderRadius: 40,
     padding: 10,
     position: "relative",
     marginHorizontal: 20,
-    marginBottom: 20,
+    marginBottom: 80,
     marginTop: "auto",
   },
   icon: {
@@ -122,8 +122,10 @@ export const styles = StyleSheet.create({
   },
   inviteTextMain: {
     fontSize: 12,
+    lineHeight: 20,
   },
   inviteTextSub: {
+    lineHeight: 20,
     letterSpacing: 0.05,
     fontSize: 10,
   },

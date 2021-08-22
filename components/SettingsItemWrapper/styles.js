@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   settingText: {
-    fontFamily: "FiraCode-SemiBold",
     letterSpacing: 0.05,
     fontSize: 14,
   },

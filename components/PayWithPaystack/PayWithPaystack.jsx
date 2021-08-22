@@ -74,7 +74,6 @@ const PayWithPaystack = ({
         title={topUp ? "Top Up" : "Pay With Paystack"}
         customStyle={styles.payMethodBtn}
         textStyle={{
-          fontFamily: "FiraCode-SemiBold",
           textTransform: "capitalize",
           fontWeight: "400",
           fontSize: 12,

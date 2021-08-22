@@ -1,9 +1,16 @@
-import { StyleSheet } from "react-native";
-
+import { StyleSheet, Dimensions } from "react-native";
+const { width, height } = Dimensions.get("screen");
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+
+  listContainer: {
+    width: "100%",
+    marginHorizontal: 10,
+    marginTop: 10,
+    marginBottom: 100,
   },
   header: {
     flexDirection: "row",
@@ -12,14 +19,14 @@ export const styles = StyleSheet.create({
     paddingTop: 50,
     paddingBottom: 15,
     paddingLeft: 20,
-    paddingRight: 20,
+    paddingRight: 10,
     minHeight: 80,
     backgroundColor: "#ffffff",
     justifyContent: "space-between",
   },
   routeTitle: {
     color: "#111111",
-    fontSize: 14,
+    fontSize: 18,
     letterSpacing: 1,
   },
 });

@@ -1,7 +1,13 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import AppButton from "../../components/AppButton/AppButton";
 import { COLORS } from "../../constants/Colors";
@@ -18,45 +24,73 @@ const Home = () => {
   };
   const [hasInvestment] = useState(false);
   const [isTipHidden, hideTip] = useState(false);
+  const [hour, setHour] = useState(null);
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  useEffect(() => {});
+  useEffect(() => {
+    getHour();
+  });
+  const getHour = () => {
+    const date = new Date();
+    const hour = date.getHours();
+    setHour(hour);
+  };
 
   return (
     <>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.navigate("Notification")}>
-          <View style={styles.noty}>
-            <Ionicons name="notifications" size={24} color="#dddcdb" />
-          </View>
-        </TouchableOpacity>
-        {user && (
-          <Text style={styles.title}>
-            {" "}
-            Hi,{" "}
-            <Text
-              style={{
-                color: "#dddcdb",
-              }}
-            >
-              {user.first_name}
-            </Text>
-          </Text>
-        )}
+        <View style={styles.user}>
+          <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+            <View style={styles.imageContainer}>
+              <Ionicons name="person-circle" size={50} color="#dddcdb" />
+              {/* <Image style={styles.profilePic} source={avatar} /> */}
+            </View>
+          </TouchableOpacity>
 
+          <View style={{ width: 10 }}></View>
+          <View style={{}}>
+            <Text
+              style={[
+                styles.title,
+                { color: COLORS.lightTextColor, fontSize: 14 },
+              ]}
+            >
+              {hour < 12 ? `Good Morning` : `Good Evening`}
+              {/* Good Morning */}
+            </Text>
+            {user && (
+              <Text style={styles.title}>
+                <Text
+                  style={{
+                    color: COLORS.darkTextColor,
+                    fontSize: 16,
+                  }}
+                >
+                  {user.first_name} {user.last_name.substring(0, 1)}.
+                </Text>
+              </Text>
+            )}
+          </View>
+        </View>
+
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate("Notification")}
+        >
+          <View style={styles.noty}>
+            <Ionicons
+              name="md-notifications-outline"
+              size={24}
+              color={COLORS.black}
+            />
+            {/* <Ionicons name="notifications" size={24} color={COLORS.black} /> */}
+          </View>
+        </TouchableWithoutFeedback>
         <View
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
           }}
-        >
-          <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-            <View style={styles.imageContainer}>
-              <Ionicons name="person-circle" size={30} color="#dddcdb" />
-              {/* <Image style={styles.profilePic} source={avatar} /> */}
-            </View>
-          </TouchableOpacity>
-        </View>
+        ></View>
       </View>
       <View style={styles.container}>
         <View style={styles.wallet}>
@@ -64,7 +98,7 @@ const Home = () => {
             <Text style={styles.walletMainTextLight}>Your Balance</Text>
             <Text style={styles.walletMainTextBold}>{`₦ ${"00.00"}`}</Text>
           </View>
-          <View style={styles.walletButtons}>
+          {/* <View style={styles.walletButtons}>
             <AppButton
               onPress={() => navigation.navigate("TopUp")}
               title="Top Up"
@@ -86,7 +120,7 @@ const Home = () => {
                 color: COLORS.tint,
               }}
             />
-          </View>
+          </View> */}
         </View>
         {hasInvestment ? (
           <View style={[styles.sectionContainer, styles.investments]}>
@@ -102,7 +136,16 @@ const Home = () => {
         ) : (
           <View style={styles.noInvestment}>
             <View style={[styles.sectionContainer, styles.recommended]}>
-              <View style={styles.sectionContainerHead}>
+              <View
+                style={[
+                  styles.sectionContainerHead,
+                  {
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  },
+                ]}
+              >
                 <Text
                   style={[
                     styles.sectionContainerTitle,
@@ -111,6 +154,19 @@ const Home = () => {
                 >
                   Recommended
                 </Text>
+                <TouchableWithoutFeedback
+                  onPress={() => navigation.navigate("packages")}
+                >
+                  <Text
+                    style={[
+                      styles.sectionContainerTitle,
+                      styles.recommendedTitleText,
+                      { color: COLORS.tint, fontSize: 12 },
+                    ]}
+                  >
+                    See all
+                  </Text>
+                </TouchableWithoutFeedback>
               </View>
               <View style={styles.recommendations}>
                 <ScrollView
