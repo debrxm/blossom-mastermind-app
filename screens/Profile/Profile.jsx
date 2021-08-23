@@ -82,7 +82,7 @@ const Profile = () => {
           </TouchableOpacity>
         </View>
         <Text style={styles.routeTitle}>Profile</Text>
-        <View
+        {/* <View
           style={{
             flexDirection: "row",
             justifyContent: "flex-end",
@@ -95,7 +95,7 @@ const Profile = () => {
           >
             <Feather name="more-vertical" size={20} color="black" />
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
       <HelperDialog
         visible={dialogVisible}
@@ -131,7 +131,6 @@ const Profile = () => {
         <View style={styles.userPreview}>
           <View style={styles.userImageContainer}>
             <Ionicons name="person-circle" size={100} color="#dddcdb" />
-            {/* <Image style={styles.userImage} source={avatar} /> */}
           </View>
           <View style={styles.usernameContainer}>
             <Text
@@ -139,49 +138,18 @@ const Profile = () => {
             >{`${user.first_name} ${user.last_name}`}</Text>
             <Text style={styles.username}>{user.phone}</Text>
           </View>
+          <View style={{ marginLeft: "auto", marginRight: 20 }}>
+            <TouchableOpacity style={{ marginVertical: 6 }} onPress={() => {}}>
+              <AntDesign name="edit" size={20} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{ marginVertical: 6 }}
+              onPress={handleSignout}
+            >
+              <Feather name="log-out" size={20} color="red" />
+            </TouchableOpacity>
+          </View>
         </View>
-        {/* <View style={styles.invest}>
-          <AppButton
-            onPress={() => navigation.navigate("Investments")}
-            title="Your Investments"
-            customStyle={styles.investBtn}
-            textStyle={{
-              textTransform: "capitalize",
-              fontWeight: "400",
-              fontSize: 12,
-            }}
-          />
-          <AppButton
-            onPress={() => navigation.navigate("Withdraw")}
-            title="Cash Out"
-            customStyle={{
-              ...styles.investBtn,
-              backgroundColor: "#ffffff",
-              width: "30%",
-              marginLeft: 10,
-            }}
-            textStyle={{
-              textTransform: "capitalize",
-              fontWeight: "400",
-              fontSize: 12,
-              color: colors[0],
-            }}
-          />
-        </View> */}
-        {/* <View style={styles.money}>
-          <TouchableOpacity onPress={() => navigation.navigate("Wallet")}>
-            <View style={styles.wallet}>
-              <Text style={styles.moneyLightText}>My Balance</Text>
-              <Text style={styles.moneyBoldText}>{`₦ ${"00.00"}`}</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Bonus")}>
-            <View style={styles.bonus}>
-              <Text style={styles.moneyLightText}>My Bonus</Text>
-              <Text style={styles.moneyBoldText}>{`₦ ${"00.00"}`}</Text>
-            </View>
-          </TouchableOpacity>
-        </View> */}
 
         <View style={styles.settings}>
           <SettingsItemWrapper

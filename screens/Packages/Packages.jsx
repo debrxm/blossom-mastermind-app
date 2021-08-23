@@ -14,6 +14,7 @@ import {
 import ProductPreview from "../../components/ProductPreview/ProductPreview";
 
 import { styles } from "./styles";
+import { COLORS } from "../../constants/Colors";
 
 let page = 1;
 const Packages = () => {
@@ -90,21 +91,20 @@ const Packages = () => {
   return (
     <>
       <View style={styles.header}>
-        <Text style={styles.routeTitle}>Packges</Text>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            width: 60,
-          }}
-        >
-          <TouchableOpacity
-            style={styles.circle}
-            onPress={() => setDialogVisible(true)}
-          >
-            <Feather name="more-vertical" size={20} color="black" />
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <View
+              style={{ flexDirection: "row", alignItems: "center", width: 60 }}
+            >
+              <Ionicons
+                name="chevron-back-outline"
+                size={24}
+                color={COLORS.black}
+              />
+            </View>
           </TouchableOpacity>
         </View>
+        <Text style={styles.routeTitle}>Packges</Text>
       </View>
       <View style={styles.container}>
         <View style={styles.listContainer}>

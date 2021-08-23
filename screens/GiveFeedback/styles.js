@@ -76,15 +76,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    margin: 10,
+    marginHorizontal: "30%",
     marginBottom: 80,
-    height: 50,
-    // paddingBottom: 90,
+    height: 40,
   },
   buttonText: {
     color: "white",
     fontSize: 16,
-    fontWeight: "bold",
   },
 });
 

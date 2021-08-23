@@ -10,10 +10,10 @@ import {
   Dimensions,
 } from "react-native";
 import { Width } from "../../constants/Layout";
-import { styles } from "./styles";
 const { width, height } = Dimensions.get("window");
-
 const COLORS = { primary: "#ffffff", white: "#010101" };
+
+import { styles } from "./styles";
 
 const slides = [
   {

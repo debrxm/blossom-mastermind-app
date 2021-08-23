@@ -68,4 +68,11 @@ export const styles = StyleSheet.create({
     marginVertical: 20,
     letterSpacing: 0.5,
   },
+  indicator: {
+    height: 2.5,
+    width: 10,
+    backgroundColor: "grey",
+    marginHorizontal: 3,
+    borderRadius: 2,
+  },
 });

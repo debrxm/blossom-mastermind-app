@@ -90,12 +90,11 @@ const ReportBug = () => {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Ionicons
-                name="ios-arrow-back"
+                name="chevron-back-outline"
                 size={24}
                 color="black"
                 style={{ marginRight: 10 }}
               />
-              <Text style={styles.title}>Back</Text>
             </View>
           </TouchableOpacity>
         </View>

@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   },
   routeTitle: {
     color: "#111111",
-    fontSize: 18,
+    fontSize: 16,
     letterSpacing: 1,
   },
 });

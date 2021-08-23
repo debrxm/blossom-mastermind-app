@@ -89,12 +89,11 @@ const GiveFeedback = () => {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Ionicons
-                name="ios-arrow-back"
+                name="chevron-back-outline"
                 size={24}
                 color="black"
                 style={{ marginRight: 10 }}
               />
-              <Text style={styles.title}>Back</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -148,7 +147,7 @@ const GiveFeedback = () => {
         </View>
         <TouchableOpacity onPress={onPostSuggestion}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>Post Suggestion</Text>
+            <Text style={styles.buttonText}>Send</Text>
             {loading && (
               <Image
                 style={{ marginTop: 2, marginLeft: 5, width: 18, height: 18 }}

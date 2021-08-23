@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../constants/Colors";
+import { COLORS, colors } from "../../constants/Colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -24,12 +24,14 @@ export const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   userPreview: {
+    width: "100%",
+    flexDirection: "row",
     alignItems: "center",
+    paddingVertical: 30,
   },
   userImageContainer: {
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 30,
     // paddingBottom: 20,
   },
   userImage: {
@@ -37,7 +39,7 @@ export const styles = StyleSheet.create({
     height: 110,
     borderRadius: 100,
     borderWidth: 2,
-    borderColor: "#cd9931",
+    borderColor: COLORS.tint,
   },
   usernameContainer: {
     // flexDirection: "row",
@@ -47,7 +49,7 @@ export const styles = StyleSheet.create({
     color: "#42414C",
     fontSize: 18,
     fontWeight: "600",
-    marginBottom: 5,
+    // marginBottom: 5,
     marginLeft: -2,
     letterSpacing: 1,
   },

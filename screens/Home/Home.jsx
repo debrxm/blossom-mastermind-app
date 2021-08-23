@@ -55,7 +55,11 @@ const Home = () => {
                 { color: COLORS.lightTextColor, fontSize: 14 },
               ]}
             >
-              {hour < 12 ? `Good Morning` : `Good Evening`}
+              {hour < 12
+                ? `Good Morning`
+                : hour < 17
+                ? `Good Afternoon`
+                : `Good Evening`}
               {/* Good Morning */}
             </Text>
             {user && (
@@ -82,7 +86,6 @@ const Home = () => {
               size={24}
               color={COLORS.black}
             />
-            {/* <Ionicons name="notifications" size={24} color={COLORS.black} /> */}
           </View>
         </TouchableWithoutFeedback>
         <View
@@ -155,7 +158,7 @@ const Home = () => {
                   Recommended
                 </Text>
                 <TouchableWithoutFeedback
-                  onPress={() => navigation.navigate("packages")}
+                  onPress={() => navigation.navigate("Packages")}
                 >
                   <Text
                     style={[

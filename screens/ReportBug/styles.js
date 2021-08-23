@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     minHeight: 80,
     backgroundColor: COLORS.white,
     justifyContent: "space-between",
-    // elevation: 4,
   },
   title: {
     color: "#111111",
@@ -77,14 +76,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    margin: 10,
+    marginHorizontal: "30%",
     marginBottom: 80,
-    height: 50,
+    height: 40,
   },
   buttonText: {
     color: "white",
     fontSize: 16,
-    fontWeight: "bold",
   },
 });
 
