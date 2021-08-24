@@ -1,4 +1,4 @@
-import { Feather, FontAwesome } from "@expo/vector-icons";
+import { AntDesign, Feather, FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import React, { useEffect, useState } from "react";
 import {
@@ -15,14 +15,17 @@ import CustomPopUp from "../../components/CustomPopUp/CustomPopUp";
 import { validateUser } from "../../utils/validations";
 
 import { styles } from "./styles";
+import OtpModal from "../../components/OtpModal/OtpModal";
 
 const Register = () => {
-  const [fullname, setFullname] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [modalVisible, setModalVisible] = useState(true);
   const [toggleShowPassword, setToggleShowPassword] = useState(false);
   const [toggleShowConfirmPassword, setToggleShowConfirmPassword] =
     useState(false);
@@ -32,7 +35,8 @@ const Register = () => {
 
   const handleRegisterUser = async () => {
     if (
-      fullname.trim() === "" ||
+      firstName.trim() === "" ||
+      lastName.trim() === "" ||
       email.trim() === "" ||
       phone.trim() === "" ||
       confirmPassword.trim() === "" ||
@@ -42,8 +46,8 @@ const Register = () => {
       return;
     }
     const result = validateUser({
-      first_name: fullname.split(" ")[0],
-      last_name: fullname.split(" ")[1],
+      first_name: firstName,
+      last_name: lastName,
       phone_number: phone,
       email,
     });
@@ -60,9 +64,10 @@ const Register = () => {
         email,
         password
       );
+      // Verify phone number then send user data to database
       await createUserProfileDocument(user, {
-        username: username.toLowerCase(),
-        name: fullname,
+        name: `${firstName} ${lastName}`,
+        phone,
       });
       setLoading(false);
     } catch (error) {
@@ -82,6 +87,7 @@ const Register = () => {
       source={require("../../assets/images/auth-bg.png")}
       style={styles.bgStyle}
     >
+      <OtpModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
       <View style={styles.container}>
         <View style={styles.head}>
           <Text style={styles.headText}>Create Account</Text>
@@ -110,18 +116,37 @@ const Register = () => {
             size={20}
             color="#97989A"
           />
-
           <TextInput
             style={styles.input}
             underlineColorAndroid="transparent"
-            placeholder="Full name"
+            placeholder="First name"
             placeholderTextColor="#97989A"
             autoCapitalize="words"
             onChangeText={(e) => {
               setErrorMessage("");
-              setFullname(e);
+              setFirstName(e);
             }}
-            value={fullname}
+            value={firstName}
+          />
+        </View>
+        <View style={styles.inputGroup}>
+          <FontAwesome
+            name="user-o"
+            style={styles.inputGroupIcon}
+            size={20}
+            color="#97989A"
+          />
+          <TextInput
+            style={styles.input}
+            underlineColorAndroid="transparent"
+            placeholder="Last name"
+            placeholderTextColor="#97989A"
+            autoCapitalize="words"
+            onChangeText={(e) => {
+              setErrorMessage("");
+              setLastName(e);
+            }}
+            value={lastName}
           />
         </View>
         <View style={styles.inputGroup}>
@@ -172,14 +197,14 @@ const Register = () => {
             style={styles.inputGroupIcon}
             name="lock"
             size={22}
-            color="black"
+            color="#97989A"
           />
           <TextInput
             style={styles.input}
             underlineColorAndroid="transparent"
             secureTextEntry={!toggleShowPassword ? true : false}
             placeholder="Password"
-            placeholderTextColor="#000000"
+            placeholderTextColor="#97989A"
             autoCapitalize="none"
             onChangeText={(e) => {
               setErrorMessage("");
@@ -193,7 +218,7 @@ const Register = () => {
             <Feather
               name={toggleShowPassword ? "eye-off" : "eye"}
               size={20}
-              color="black"
+              color="#97989A"
               style={{ marginRight: 10 }}
             />
           </TouchableWithoutFeedback>
@@ -203,14 +228,14 @@ const Register = () => {
             style={styles.inputGroupIcon}
             name="lock"
             size={22}
-            color="black"
+            color="#97989A"
           />
           <TextInput
             style={styles.input}
             underlineColorAndroid="transparent"
             secureTextEntry={!toggleShowConfirmPassword ? true : false}
             placeholder="Confirm password"
-            placeholderTextColor="#000000"
+            placeholderTextColor="#97989A"
             autoCapitalize="none"
             onChangeText={(e) => {
               setErrorMessage("");
@@ -226,7 +251,7 @@ const Register = () => {
             <Feather
               name={toggleShowConfirmPassword ? "eye-off" : "eye"}
               size={20}
-              color="black"
+              color="#97989A"
               style={{ marginRight: 10 }}
             />
           </TouchableWithoutFeedback>

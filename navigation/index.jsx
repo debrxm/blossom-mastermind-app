@@ -20,13 +20,7 @@ import { setCurrentUser, toggleHasNoty } from "../redux/user/actions";
 
 function Navigation({ colorScheme }) {
   const currentUser = useSelector(({ user }) => user.currentUser);
-  const currentUser = {
-    id: "u2ihuw9bsw8uiuw89",
-    first_name: "Sam",
-    last_name: "Jackson",
-    email: "ibrahxxm@gmail.com",
-    phone: "08117671213",
-  };
+  console.log(currentUser);
   const notificationListener = useRef();
   const responseListener = useRef();
   const dispatch = useDispatch();
@@ -64,14 +58,14 @@ function Navigation({ colorScheme }) {
       if (currentUser && currentUser.notificationToken) {
         currentUser.notificationToken !== token &&
           updateNotificationToken(token);
-      } else {
+      } else if (currentUser) {
         updateNotificationToken(token);
       }
     });
 
     notificationListener.current =
       Notifications.addNotificationReceivedListener((notification) => {
-        console.log("Noty Listeer", notification);
+        console.log("Noty Listener", notification);
         dispatch(toggleHasNoty(true));
       });
 

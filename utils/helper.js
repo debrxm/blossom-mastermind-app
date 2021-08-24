@@ -1,4 +1,6 @@
 import { firestore } from "../firebase/config";
+import Constants from "expo-constants";
+import * as Notifications from "expo-notifications";
 
 export const GenerateRandomNDigits = (n) => {
   return Math.floor(Math.random() * (9 * Math.pow(10, n))) + Math.pow(10, n);
@@ -43,6 +45,59 @@ export const Wait = (timeout) => {
     setTimeout(resolve, timeout);
   });
 };
+
+export async function SchedulePushNotification() {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: "You've got mail! 📬",
+      body: "Here is the notification body",
+      data: { data: "goes here" },
+    },
+    trigger: { seconds: 2 },
+  });
+}
+// SchedulePushNotification();
+export async function ScheduleReportPushNotification() {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: "Report Ready !!!",
+      body: "View todays sales report",
+      data: { data: "" },
+    },
+    trigger: { repeats: true, hour: 21, minute: 12 },
+  });
+}
+
+export async function RegisterForPushNotificationsAsync() {
+  let token;
+  if (Constants.isDevice) {
+    const { status: existingStatus } =
+      await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+    if (existingStatus !== "granted") {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if (finalStatus !== "granted") {
+      alert("Failed to get push token for push notification!");
+      return;
+    }
+    token = (await Notifications.getExpoPushTokenAsync()).data;
+  } else {
+    alert("Must use physical device for Push Notifications");
+  }
+
+  if (Platform.OS === "android") {
+    Notifications.setNotificationChannelAsync("default", {
+      name: "default",
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: "#FF231F7C",
+    });
+  }
+
+  return token;
+}
 
 export const SendNotification = (pushNotificationData) => {
   const { body, token, title } = pushNotificationData;
