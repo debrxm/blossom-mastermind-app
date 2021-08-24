@@ -46,7 +46,7 @@ const Notification = () => {
           item={{
             image: notificationIcon,
             title: "You currently do not have notification",
-            subtitle: `Here you'll find updates about your investment`,
+            subtitle: `You will see notifications about your investment appear here `,
           }}
         />
       )}

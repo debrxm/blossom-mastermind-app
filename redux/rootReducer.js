@@ -1,6 +1,7 @@
-import Auth from "./auth/reducer";
 import { persistCombineReducers } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Auth from "./auth/reducer";
+import userReducer from "./user/reducers";
 import products from "./products/reducer";
 import PayUp from "./payUp/reducers";
 import investments from "./investment/reducer";
@@ -16,5 +17,6 @@ const rootReducer = persistCombineReducers(persistConfig, {
   Auth,
   products,
   investments,
+  user: userReducer,
 });
 export default rootReducer;

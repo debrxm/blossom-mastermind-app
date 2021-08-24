@@ -8,6 +8,8 @@ import {
   TextInput,
   TouchableWithoutFeedback,
 } from "react-native";
+import { auth, firestore } from "../../firebase/config";
+import { createUserProfile } from "../../firebase/firestore";
 import AppButton from "../../components/AppButton/AppButton";
 import CustomPopUp from "../../components/CustomPopUp/CustomPopUp";
 import { validateUser } from "../../utils/validations";
@@ -19,12 +21,23 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [toggleShowPassword, setToggleShowPassword] = useState(false);
+  const [toggleShowConfirmPassword, setToggleShowConfirmPassword] =
+    useState(false);
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
   useEffect(() => {}, []);
 
   const handleRegisterUser = async () => {
-    if (fullname.trim() === "" || email.trim() === "" || phone.trim() === "") {
+    if (
+      fullname.trim() === "" ||
+      email.trim() === "" ||
+      phone.trim() === "" ||
+      confirmPassword.trim() === "" ||
+      password.trim() === ""
+    ) {
       setErrorMessage("All fields are required");
       return;
     }
@@ -42,23 +55,25 @@ const Register = () => {
     createUser();
   };
   const createUser = async () => {
-    console.log("====================================");
-    console.log(fullname.split(" ")[0], fullname.split(" ")[1], phone, email);
-    console.log("====================================");
     try {
-      // await REGISTER_USER({
-      //   email: email,
-      //   first_name: fullname.split(" ")[0],
-      //   last_name: fullname.split(" ")[1],
-      //   phone_number: phone,
-      // });
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      await createUserProfileDocument(user, {
+        username: username.toLowerCase(),
+        name: fullname,
+      });
       setLoading(false);
-      // navigation.navigate("Dashboard");
     } catch (error) {
+      error.code === "auth/email-already-in-use"
+        ? setErrorMessage(
+            "The email address is already in use by another account"
+          )
+        : error.code === "auth/weak-password"
+        ? setErrorMessage("Password should be at least 6 characters")
+        : setErrorMessage("Internal server error");
       setLoading(false);
-      console.log("====================================");
-      console.log(error);
-      console.log("====================================");
     }
   };
 
@@ -151,6 +166,70 @@ const Register = () => {
             }}
             value={phone}
           />
+        </View>
+        <View style={styles.inputGroup}>
+          <AntDesign
+            style={styles.inputGroupIcon}
+            name="lock"
+            size={22}
+            color="black"
+          />
+          <TextInput
+            style={styles.input}
+            underlineColorAndroid="transparent"
+            secureTextEntry={!toggleShowPassword ? true : false}
+            placeholder="Password"
+            placeholderTextColor="#000000"
+            autoCapitalize="none"
+            onChangeText={(e) => {
+              setErrorMessage("");
+              setPassword(e);
+            }}
+            value={password}
+          />
+          <TouchableWithoutFeedback
+            onPress={() => setToggleShowPassword(!toggleShowPassword)}
+          >
+            <Feather
+              name={toggleShowPassword ? "eye-off" : "eye"}
+              size={20}
+              color="black"
+              style={{ marginRight: 10 }}
+            />
+          </TouchableWithoutFeedback>
+        </View>
+        <View style={styles.inputGroup}>
+          <AntDesign
+            style={styles.inputGroupIcon}
+            name="lock"
+            size={22}
+            color="black"
+          />
+          <TextInput
+            style={styles.input}
+            underlineColorAndroid="transparent"
+            secureTextEntry={!toggleShowConfirmPassword ? true : false}
+            placeholder="Confirm password"
+            placeholderTextColor="#000000"
+            autoCapitalize="none"
+            onChangeText={(e) => {
+              setErrorMessage("");
+              setConfirmPassword(e);
+            }}
+            value={confirmPassword}
+          />
+          <TouchableWithoutFeedback
+            onPress={() =>
+              setToggleShowConfirmPassword(!toggleShowConfirmPassword)
+            }
+          >
+            <Feather
+              name={toggleShowConfirmPassword ? "eye-off" : "eye"}
+              size={20}
+              color="black"
+              style={{ marginRight: 10 }}
+            />
+          </TouchableWithoutFeedback>
         </View>
 
         <View style={styles.btns}>
