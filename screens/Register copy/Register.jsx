@@ -8,10 +8,12 @@ import {
   TextInput,
   TouchableWithoutFeedback,
 } from "react-native";
+import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
 import firebase, { auth, firestore } from "../../firebase/config";
 import AppButton from "../../components/AppButton/AppButton";
 import CustomPopUp from "../../components/CustomPopUp/CustomPopUp";
 import { validateUser } from "../../utils/validations";
+import OtpModal from "../../components/OtpModal/OtpModal";
 
 import { styles } from "./styles";
 import { createUserProfileDocument } from "../../firebase/auth";
@@ -28,8 +30,15 @@ const Register = () => {
   const [toggleShowPassword, setToggleShowPassword] = useState(false);
   const [toggleShowConfirmPassword, setToggleShowConfirmPassword] =
     useState(false);
+  const recaptchaVerifier = React.useRef(null);
+  const [verificationId, setVerificationId] = React.useState();
+  const [userSlug, setUserSlug] = useState({});
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
+  const firebaseConfig = firebase.apps.length
+    ? firebase.app().options
+    : undefined;
+  useEffect(() => {}, []);
 
   const handleRegisterUser = async () => {
     if (
@@ -62,17 +71,20 @@ const Register = () => {
         email,
         password
       );
-      user.sendEmailVerification();
-      // auth.currentUser.sendEmailVerification();
       if (user) {
-        await createUserProfileDocument(user, {
-          first_name: firstName,
-          last_name: lastName,
+        setModalVisible(true);
+        const phoneProvider = new firebase.auth.PhoneAuthProvider();
+        const verificationId = await phoneProvider.verifyPhoneNumber(
           phone,
-        });
+          recaptchaVerifier.current
+        );
+        setVerificationId(verificationId);
+        setUserSlug(user);
+        console.log("HERE");
       }
       setLoading(false);
     } catch (error) {
+      console.log(error);
       error.code === "auth/email-already-in-use"
         ? setErrorMessage(
             "The email address is already in use by another account"
@@ -83,12 +95,42 @@ const Register = () => {
       setLoading(false);
     }
   };
+  const OnVerifyPhone = async (verificationCode) => {
+    console.log("here", verificationCode);
+    try {
+      const credential = firebase.auth.PhoneAuthProvider.credential(
+        verificationId,
+        verificationCode
+      );
+      // await firebase.auth().signInWithCredential(credential);
+      console.log(credential);
+      if (credential) {
+        console.log("wrapping up");
+        console.log(auth.currentUser);
+        await createUserProfileDocument(userSlug, {
+          first_name: firstName,
+          last_name: lastName,
+        });
+      }
+    } catch (err) {
+      setErrorMessage(`${err.message}`);
+    }
+  };
 
   return (
     <ImageBackground
       source={require("../../assets/images/auth-bg.png")}
       style={styles.bgStyle}
     >
+      <FirebaseRecaptchaVerifierModal
+        ref={recaptchaVerifier}
+        firebaseConfig={firebaseConfig}
+      />
+      <OtpModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        OnVerifyPhone={OnVerifyPhone}
+      />
       <View style={styles.container}>
         <View style={styles.head}>
           <Text style={styles.headText}>Create Account</Text>

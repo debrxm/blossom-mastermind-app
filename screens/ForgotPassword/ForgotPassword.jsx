@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import AppButton from "../../components/AppButton/AppButton";
+import { auth } from "../../firebase/config";
 import CustomPopUp from "../../components/CustomPopUp/CustomPopUp";
 
 import { styles } from "./styles";
@@ -19,20 +20,21 @@ const ForgotPassword = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigation = useNavigation();
   const handleSubmit = async () => {
-    if (email.trim() === "") {
-      setErrorMessage("Enter a valid email!");
-      return;
-    }
     setLoading(true);
-    console.log(email);
     try {
-      // await FORGET_PASSWORD(email);
+      await auth.sendPasswordResetEmail(email);
       navigation.navigate("Login");
+      setLoading(false);
     } catch (error) {
-      console.log("====================================");
-      console.log(error);
-      console.log("====================================");
+      error.code === "auth/invalid-email"
+        ? setErrorMessage("The email address is badly formatted.")
+        : error.code === "auth/user-not-found"
+        ? setErrorMessage(
+            "There is no user record corresponding to this identifier. The user may have been deleted."
+          )
+        : setErrorMessage("Internal server error");
     }
+    // this.setState({ email: '', password: '' });
   };
 
   return (

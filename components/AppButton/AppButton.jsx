@@ -34,7 +34,7 @@ const AppButton = ({
       {iconComponent && iconComponent}
       {loading && (
         <Image
-          style={{ marginTop: 2, marginLeft: 5, width: 18, height: 18 }}
+          style={{ marginTop: 2, marginLeft: 10, width: 16, height: 16 }}
           source={require("../../assets/loader.gif")}
         />
       )}

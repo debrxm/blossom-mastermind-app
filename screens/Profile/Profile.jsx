@@ -9,7 +9,7 @@ import {
 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { View, Image, Share, Text, TouchableOpacity } from "react-native";
 import HelperDialog from "../../components/HelperDialog/HelperDialog";
 // import avatar from "../../assets/images/avatar.png";
@@ -18,21 +18,20 @@ import { styles } from "./styles";
 import { colors } from "../../constants/Colors";
 import SettingsItemWrapper from "../../components/SettingsItemWrapper/SettingsItemWrapper";
 import AppButton from "../../components/AppButton/AppButton";
+import { auth } from "../../firebase/config";
+import { setCurrentUser } from "../../redux/user/actions";
 
 const Profile = () => {
-  // const { user } = useSelector(({ Auth }) => Auth);
-  const user = {
-    first_name: "Sam",
-    last_name: "Jackson",
-    email: "ibrahxxm@gmail.com",
-    phone: "08117671213",
-  };
+  const user = useSelector(({ user }) => user.currentUser);
   const [dialogVisible, setDialogVisible] = useState(false);
   useEffect(() => {}, []);
 
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const handleSignout = () => {
     // LOGOUT_USER();
+    dispatch(setCurrentUser(null));
+    auth.signOut();
   };
   const onShare = async () => {
     const uri = "../../assets/logos/bb.png";

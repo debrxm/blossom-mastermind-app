@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     height: "100%",
     backgroundColor: "#ffffff",
-    // alignItems: "flex-start",
+    alignItems: "flex-start",
     // justifyContent: "center",
   },
   codeContainer: {

@@ -1,4 +1,4 @@
-import { Feather, FontAwesome } from "@expo/vector-icons";
+import { AntDesign, Feather, FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import React, { useState } from "react";
 import {
@@ -10,44 +10,41 @@ import {
 } from "react-native";
 import AppButton from "../../components/AppButton/AppButton";
 import CustomPopUp from "../../components/CustomPopUp/CustomPopUp";
-import { validateLoginUser } from "../../utils/validations";
+import { auth } from "../../firebase/config";
 
 import { styles } from "./styles";
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [password, setPassword] = useState("");
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
+  const [toggleShowPassword, setToggleShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const handleSubmit = async () => {
-    if (email.trim() === "" || phone.trim() === "") {
+    if (email.trim() === "" || password.trim() === "") {
       setErrorMessage("All fields are required");
       return;
     }
-    const result = validateLoginUser({ password: phone, email });
-    if (result.errors.length) {
-      setErrorMessage(result.errors.toString().replace(/\,/gi, " "));
-      setLoading(false);
-      return;
-    }
     setLoading(true);
-    onLogUserIn();
-  };
-  const onLogUserIn = async () => {
     try {
-      // await LOGIN_USER({ email: email, password: phone });
+      await auth.signInWithEmailAndPassword(email, password);
       setEmail("");
-      setPhone("");
+      setPassword("");
       setLoading(false);
     } catch (error) {
-      setErrorMessage("Ooops An error occured try again");
-      // console.log("====================================");
-      // console.log(error);
-      // console.log("====================================");
+      error.code === "auth/wrong-password"
+        ? setErrorMessage(
+            "The password is invalid or the user does not have a password."
+          )
+        : error.code === "auth/user-not-found"
+        ? setErrorMessage(
+            "There is no user record corresponding to this identifier."
+          )
+        : setErrorMessage("Shit just got real");
+      setLoading(false);
     }
   };
-
   return (
     <ImageBackground
       source={require("../../assets/images/auth-bg.png")}
@@ -95,25 +92,35 @@ const Login = () => {
           />
         </View>
         <View style={styles.inputGroup}>
-          <Feather
-            name="phone"
+          <AntDesign
             style={styles.inputGroupIcon}
-            size={20}
+            name="lock"
+            size={22}
             color="#97989A"
           />
           <TextInput
             style={styles.input}
             underlineColorAndroid="transparent"
-            keyboardType="phone-pad"
-            placeholder="Phone"
+            secureTextEntry={!toggleShowPassword ? true : false}
+            placeholder="Password"
             placeholderTextColor="#97989A"
             autoCapitalize="none"
             onChangeText={(e) => {
               setErrorMessage("");
-              setPhone(e);
+              setPassword(e);
             }}
-            value={phone}
+            value={password}
           />
+          <TouchableWithoutFeedback
+            onPress={() => setToggleShowPassword(!toggleShowPassword)}
+          >
+            <Feather
+              name={toggleShowPassword ? "eye-off" : "eye"}
+              size={20}
+              color="#97989A"
+              style={{ marginRight: 10 }}
+            />
+          </TouchableWithoutFeedback>
         </View>
         <View style={{ marginVertical: 15 }}>
           <TouchableWithoutFeedback

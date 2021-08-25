@@ -9,7 +9,7 @@ import investments from "./investment/reducer";
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
-  whitelist: ["Auth"],
+  whitelist: ["user"],
 };
 
 const rootReducer = persistCombineReducers(persistConfig, {

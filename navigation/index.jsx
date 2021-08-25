@@ -15,11 +15,18 @@ import Register from "../screens/Register/Register";
 import Login from "../screens/Login/Login";
 import ForgotPassword from "../screens/ForgotPassword/ForgotPassword";
 import { auth, firestore } from "../firebase/config";
-import { createUserProfile } from "../firebase/auth";
+import { createUserProfileDocument } from "../firebase/auth";
 import { setCurrentUser, toggleHasNoty } from "../redux/user/actions";
 
 function Navigation({ colorScheme }) {
   const currentUser = useSelector(({ user }) => user.currentUser);
+  // const currentUser = {
+  //   id: "jhgsysg77",
+  //   first_name: "Sam",
+  //   last_name: "Jackson",
+  //   email: "ibrahxxm@gmail.com",
+  //   phone: "08117671213",
+  // };
   console.log(currentUser);
   const notificationListener = useRef();
   const responseListener = useRef();
@@ -27,7 +34,7 @@ function Navigation({ colorScheme }) {
   const checkUser = () => {
     auth.onAuthStateChanged(async (User) => {
       if (User) {
-        const userRef = await createUserProfile(User);
+        const userRef = await createUserProfileDocument(User);
         userRef.onSnapshot(async (snapShot) => {
           const data = { id: snapShot.id, ...snapShot.data() };
           dispatch(setCurrentUser(data));

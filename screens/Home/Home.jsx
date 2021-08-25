@@ -15,13 +15,7 @@ import { COLORS } from "../../constants/Colors";
 import { styles } from "./styles";
 
 const Home = () => {
-  // const { user } = useSelector(({ Auth }) => Auth);
-  const user = {
-    first_name: "Sam",
-    last_name: "Jackson",
-    email: "ibrahxxm@gmail.com",
-    phone: "08117671213",
-  };
+  const user = useSelector(({ user }) => user.currentUser);
   const [hasInvestment] = useState(false);
   const [isTipHidden, hideTip] = useState(false);
   const [hour, setHour] = useState(null);

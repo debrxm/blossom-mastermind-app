@@ -6,15 +6,14 @@ import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { styles } from "./styles";
 import { COLORS } from "../../constants/Colors";
-import { Width } from "../../constants/Layout";
+import { Height, Width } from "../../constants/Layout";
+import { auth } from "../../firebase/config";
 
-const OtpModal = ({ modalVisible, setModalVisible }) => {
+const OtpModal = ({ modalVisible, setModalVisible, OnVerifyPhone }) => {
   const user = useSelector((state) => state.user.currentUser);
   const navigation = useNavigation();
-  const [otp, setOpt] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const otpInput = useRef(null);
-  console.log(otpInput);
 
   const clearText = () => {
     otpInput.current.clear();
@@ -35,20 +34,11 @@ const OtpModal = ({ modalVisible, setModalVisible }) => {
           onRequestClose={() => {}}
           style={{
             width: "100%",
-            height: Dimensions.get("screen").height,
+            height: Height,
+            alignItems: "center",
           }}
         >
           <View style={styles.header}>
-            <View style={{ position: "absolute", bottom: 80, width: "100%" }}>
-              <TouchableOpacity
-                // style={{ width: 50, alignItems: "flex-end" }}
-                onPress={() => {
-                  setModalVisible(false);
-                }}
-              >
-                <AntDesign name="close" size={24} color={COLORS.danger} />
-              </TouchableOpacity>
-            </View>
             <Text style={styles.routeTitle}>Verify OTP</Text>
           </View>
           <View style={styles.container}>
@@ -63,10 +53,27 @@ const OtpModal = ({ modalVisible, setModalVisible }) => {
               }}
               ref={otpInput}
               handleTextChange={(e) => {
-                console.log(e);
+                if (e.length === 6) {
+                  OnVerifyPhone(e);
+                }
               }}
             />
-            {/* <Button title="clear" onClick={clearText}> */}
+            <View
+              style={{
+                marginTop: "auto",
+                paddingBottom: 80,
+                width: Width,
+                alignItems: "center",
+              }}
+            >
+              <TouchableOpacity
+                onPress={() => {
+                  setModalVisible(false);
+                }}
+              >
+                <AntDesign name="close" size={35} color={COLORS.danger} />
+              </TouchableOpacity>
+            </View>
           </View>
         </Modal>
       </View>
