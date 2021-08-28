@@ -25,11 +25,11 @@ export default function ProductPreview({ data, customStyles }) {
           /> */}
         </View>
         <View style={styles.cardInfo}>
-          <Text style={styles.cardInfoName}>{data.package}</Text>
+          <Text style={styles.cardInfoName}>{data.name}</Text>
           <Text style={[styles.cardInfoLightText, { marginBottom: 6 }]}>
             Duration: {data.duration}
           </Text>
-          <Text style={styles.cardInfoLightText}>Min: ₦{data.min_deposit}</Text>
+          <Text style={styles.cardInfoLightText}>Min: ₦{data.cost}</Text>
         </View>
         <View style={styles.productCardFooter}>
           <View style={styles.productCardFooterButtons}>

@@ -8,11 +8,11 @@ import { useNavigation, useRoute } from "@react-navigation/core";
 import PayWithPaystack from "../../components/PayWithPaystack/PayWithPaystack";
 import { useSelector } from "react-redux";
 import HelperDialog from "../../components/HelperDialog/HelperDialog";
+import { Width } from "../../constants/Layout";
 const PackageView = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const data = route.params.data;
-  console.log(data);
   const user = useSelector(({ user }) => user.currentUser);
   const [dialogVisible, setDialogVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -37,11 +37,15 @@ const PackageView = () => {
             <View
               style={{ flexDirection: "row", alignItems: "center", width: 60 }}
             >
-              <Ionicons name="chevron-back-outline" size={24} color="black" />
+              <Ionicons
+                name="chevron-back-outline"
+                size={24}
+                color={COLORS.cloudyWhite}
+              />
             </View>
           </TouchableOpacity>
         </View>
-        <Text style={styles.routeTitle}>Packages</Text>
+        <Text style={styles.routeTitle}>#{data.code}</Text>
       </View>
       <HelperDialog
         visible={dialogVisible}
@@ -61,14 +65,43 @@ const PackageView = () => {
         contentContainerStyle={styles.contentContainer}
         style={styles.container}
       >
-        <Text style={styles.productName}>{data.package}</Text>
+        <View style={styles.name_roi}>
+          <Text style={styles.productName}>{data.name}</Text>
+          <Text style={styles.productRoi}>ROI: {data.roi}%</Text>
+        </View>
         <View
           style={{
             height: 60,
-            backgroundColor: "#ffffff",
+            backgroundColor: "transparent",
+            width: Width - 50,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginTop: -40,
           }}
         >
-          {/* {filterButtons(active, setActive)} */}
+          <View style={styles.planBox}>
+            <Text style={styles.planBoxBoldText}>Cost</Text>
+            <Text style={styles.planBoxLightText}>₦{data.cost}</Text>
+          </View>
+          <View style={styles.planBox}>
+            <Text style={styles.planBoxBoldText}>Duration</Text>
+            <Text style={styles.planBoxLightText}>{data.duration}</Text>
+          </View>
+          <View style={styles.planBox}>
+            <Text style={styles.planBoxBoldText}>Profit</Text>
+            <Text style={styles.planBoxLightText}>
+              ₦{data.total_return - data.cost}
+            </Text>
+          </View>
+        </View>
+        <View style={styles.breakdown}>
+          <Text style={styles.breakdownTitle}>Payment Breakdown</Text>
+          {/* <View style={styles.breakdownBox}>
+            <Text style={styles.breakdownBoxBoldText}>1st</Text>
+            <Text style={styles.breakdownBoxLightText}>
+              ₦{data.montly_return}
+            </Text>
+          </View> */}
         </View>
         {errorMessage !== "" ? (
           <CustomPopUp
@@ -84,8 +117,8 @@ const PackageView = () => {
         ) : null}
       </ScrollView>
       <PayWithPaystack
-        amount={data.min_deposit}
-        label="Invest Now"
+        amount={data.cost}
+        label={`Invest ₦${data.cost} Now`}
         handleCreateInvoice={() => handleCreateInvoice()}
         loading={payLoading}
       />

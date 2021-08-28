@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../constants/Colors";
 // import { cxlxrs } from "../../constants/Colors";
 
 export const styles = StyleSheet.create({
@@ -85,5 +86,6 @@ export const styles = StyleSheet.create({
     height: 40,
     width: "60%",
     borderRadius: 30,
+    backgroundColor: COLORS.success,
   },
 });

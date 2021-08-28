@@ -15,6 +15,7 @@ import ProductPreview from "../../components/ProductPreview/ProductPreview";
 
 import { styles } from "./styles";
 import { COLORS } from "../../constants/Colors";
+import { Plans } from "../../constants/Packages";
 
 let page = 1;
 const Packages = () => {
@@ -31,62 +32,17 @@ const Packages = () => {
     setScrollBegin(false);
   };
 
+  const loadMore = () => {};
   const handleRefreshing = () => {
     setRefreshing(true);
     page = 1;
-    // dispatch({ type: "REFRESH_PAGE" });
-    // GET_PRODUCTS(1)
-    //   .then(() => setRefreshing(false))
-    //   .catch(() => setLoading(false));
-  };
-
-  const fetchMore = () => {
-    if (scrollBegin) return;
-    setLoading(true);
-    if (loading) {
-      page += 1;
-
-      setLoading(true);
-      // GET_PRODUCTS(page)
-      //   .then(() => {
-      //     setScrollBegin(true);
-      //     setLoading(false);
-      //   })
-      //   .catch(() => setLoading(false));
-    }
   };
 
   const handleLoaderContent = () => {
-    return !loading ? null : <ActivityIndicator color={"black"} size={30} />;
+    return !loading ? null : <ActivityIndicator color={"black"} size={20} />;
   };
 
-  const handleApiCall = () => {
-    setRefreshing(true);
-    // GET_PRODUCTS(1)
-    //   .then((data) => {
-    //     console.log(data);
-    //     setRefreshing(false);
-    //     if (!data.length) {
-    //       console.log("====================================");
-    //       console.log(
-    //         "Sorry there no products available now please try again later. Thank you !"
-    //       );
-    //       console.log("====================================");
-    //       // "Sorry there no products available now please try again later. Thank you !",
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     setLoading(false);
-    //     setRefreshing(false);
-    //   });
-  };
-
-  useEffect(() => {
-    handleApiCall();
-    return () => {
-      page = 1;
-    };
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -117,32 +73,7 @@ const Packages = () => {
             showsVerticalScrollIndicator={false}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => <ProductPreview data={item} />}
-            data={[
-              {
-                package: "BLOSSOM EXECUTIVE",
-                duration: "24 months",
-                roi: 70,
-                min_deposit: 100000,
-              },
-              {
-                package: "BLOSSOM SPECIALTY",
-                duration: "24 months",
-                roi: 35,
-                min_deposit: 100000,
-              },
-              {
-                package: "BLOSSOM SUPREME",
-                duration: "12 months",
-                roi: 20,
-                min_deposit: 3000000,
-              },
-              {
-                package: "BLOSSOM BASIC",
-                duration: "6 months",
-                roi: 15,
-                min_deposit: 100000,
-              },
-            ]}
+            data={Plans}
             removeClippedSubviews={true}
             refreshControl={
               <RefreshControl
@@ -153,7 +84,7 @@ const Packages = () => {
             ListFooterComponent={handleLoaderContent}
             onEndReachedThreshold={0.4}
             onMomentumScrollBegin={onMomentumScrollBegin}
-            onEndReached={fetchMore}
+            onEndReached={loadMore}
           />
         </View>
       </View>

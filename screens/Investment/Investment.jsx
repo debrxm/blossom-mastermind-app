@@ -26,7 +26,7 @@ const slides = [
   },
   {
     id: "2",
-    data: () => <MaturedInvestment />,
+    data: () => <ElapsedInvestment />,
   },
 ];
 const Slide = ({ item }) => {
@@ -54,10 +54,10 @@ const Investment = () => {
       setCurrentSlideIndex(currentSlideIndex - 1);
     }
   };
-  const onNavigateToMatured = () => {
-    const maturedScreen = currentSlideIndex + 1;
+  const onNavigateToElapsed = () => {
+    const elapsedScreen = currentSlideIndex + 1;
     if (currentSlideIndex === 0) {
-      const offset = maturedScreen * width;
+      const offset = elapsedScreen * width;
       ref?.current.scrollToOffset({ offset });
       setCurrentSlideIndex(currentSlideIndex + 1);
     }
@@ -103,8 +103,8 @@ const Investment = () => {
               }}
             />
             <AppButton
-              title="Matured"
-              onPress={() => onNavigateToMatured()}
+              title="Elapsed"
+              onPress={() => onNavigateToElapsed()}
               customStyle={{
                 ...styles.walletBtn,
                 backgroundColor:
@@ -162,7 +162,7 @@ const ActiveInvestment = () => {
     )
   );
 };
-const MaturedInvestment = () => {
+const ElapsedInvestment = () => {
   const navigation = useNavigation();
   const [hasInvestment] = useState(false);
   return (

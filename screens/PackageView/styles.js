@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../constants/Colors";
+import { Height, Width } from "../../constants/Layout";
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#fff",
-    padding: 20,
   },
   contentContainer: {
     flex: 1,
@@ -19,17 +19,79 @@ export const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     minHeight: 80,
-    backgroundColor: "#ffffff",
+    backgroundColor: COLORS.tint,
     justifyContent: "space-between",
   },
   routeTitle: {
-    color: "#111111",
+    color: COLORS.cloudyWhite,
     fontSize: 16,
     letterSpacing: 1,
   },
+  name_roi: {
+    flexDirection: "row",
+    width: Width,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    backgroundColor: COLORS.tint,
+    paddingBottom: 50,
+  },
   productName: {
+    color: COLORS.cloudyWhite,
+    fontSize: 30,
+    paddingVertical: 20,
+  },
+  productRoi: {
+    color: COLORS.cloudyWhite,
     fontSize: 20,
     paddingVertical: 20,
+  },
+  planBox: {
+    width: Width / 4,
+    height: Height / 10,
+    backgroundColor: COLORS.white,
+    borderRadius: 10,
+    padding: 5,
+    elevation: 5,
+    shadowRadius: 1,
+    shadowOpacity: 0.5,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
+  planBoxBoldText: {
+    fontSize: 12,
+    textTransform: "uppercase",
+  },
+  planBoxLightText: {
+    fontSize: 16,
+  },
+  breakdown: {
+    marginTop: 40,
+  },
+  breakdownTitle: {
+    color: COLORS.lightTextColor,
+    marginTop: 10,
+    fontSize: 13,
+    letterSpacing: 2,
+    fontWeight: "600",
+  },
+  breakdownBox: {
+    width: Width / 5,
+    height: Height / 10,
+    backgroundColor: COLORS.white,
+    borderRadius: 10,
+    padding: 5,
+    elevation: 5,
+    shadowRadius: 1,
+    shadowOpacity: 0.5,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
+  breakdownBoxBoldText: {
+    fontSize: 12,
+    textTransform: "uppercase",
+  },
+  breakdownBoxLightText: {
+    fontSize: 16,
   },
   selectPlanText: {
     fontSize: 15,
