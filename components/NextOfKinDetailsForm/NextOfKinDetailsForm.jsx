@@ -1,19 +1,25 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, TextInput } from "react-native";
+import { View, Text, TextInput } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import CustomPopUp from "../../components/CustomPopUp/CustomPopUp";
-import { COLORS } from "../../constants/Colors";
 import { Height } from "../../constants/Layout";
+import {
+  setFirstName,
+  setLastName,
+  setMiddleName,
+  setPhone,
+} from "../../redux/SetupForm/actions";
 import CustomSelect from "../CustomSelect/CustomSelect";
 
 import { styles } from "./styles";
 
 const NextOfKinDetailsForm = ({}) => {
+  const firstName = useSelector(({ setUp }) => setUp.first_name);
+  const middleName = useSelector(({ setUp }) => setUp.middle_name);
+  const lastName = useSelector(({ setUp }) => setUp.last_name);
+  const phone = useSelector(({ setUp }) => setUp.phone);
   const [errorMessage, setErrorMessage] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [middleName, setMiddleName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState();
-
+  const dispatch = useDispatch();
   return (
     <>
       {errorMessage !== "" ? (
@@ -48,7 +54,7 @@ const NextOfKinDetailsForm = ({}) => {
             autoCapitalize="words"
             onChangeText={(e) => {
               setErrorMessage("");
-              setFirstName(e);
+              dispatch(setFirstName(e));
             }}
             value={firstName}
           />
@@ -62,7 +68,7 @@ const NextOfKinDetailsForm = ({}) => {
             autoCapitalize="words"
             onChangeText={(e) => {
               setErrorMessage("");
-              setMiddleName(e);
+              dispatch(setMiddleName(e));
             }}
             value={middleName}
           />
@@ -76,7 +82,7 @@ const NextOfKinDetailsForm = ({}) => {
             autoCapitalize="words"
             onChangeText={(e) => {
               setErrorMessage("");
-              setLastName(e);
+              dispatch(setLastName(e));
             }}
             value={lastName}
           />
@@ -93,7 +99,7 @@ const NextOfKinDetailsForm = ({}) => {
             autoCapitalize="none"
             onChangeText={(e) => {
               setErrorMessage("");
-              setPhone(e);
+              dispatch(setPhone(e));
             }}
             value={phone}
           />

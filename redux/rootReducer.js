@@ -5,6 +5,7 @@ import userReducer from "./user/reducers";
 import products from "./products/reducer";
 import PayUp from "./payUp/reducers";
 import investments from "./investment/reducer";
+import SetupFormReducer from "./SetupForm/reducers";
 
 const persistConfig = {
   key: "root",
@@ -18,5 +19,6 @@ const rootReducer = persistCombineReducers(persistConfig, {
   products,
   investments,
   user: userReducer,
+  setUp: SetupFormReducer,
 });
 export default rootReducer;

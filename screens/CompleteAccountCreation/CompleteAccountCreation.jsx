@@ -1,5 +1,4 @@
-import { Entypo, Feather, Ionicons, Octicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/core";
+import { Entypo, Ionicons, Octicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import {
   Dimensions,
@@ -20,7 +19,6 @@ const slides = [
   {
     id: "1",
     data: () => <PersonalDetailsForm />,
-    // Component
   },
   {
     id: "2",
@@ -39,8 +37,8 @@ const Slide = ({ item }) => {
   );
 };
 const CompleteAccountCreation = () => {
-  const navigation = useNavigation();
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
   const ref = React.useRef();
   const updateCurrentSlideIndex = (e) => {
     const contentOffsetX = e.nativeEvent.contentOffset.x;
@@ -63,6 +61,7 @@ const CompleteAccountCreation = () => {
       setCurrentSlideIndex(currentSlideIndex + 1);
     }
   };
+
   useEffect(() => {}, []);
   return (
     <>

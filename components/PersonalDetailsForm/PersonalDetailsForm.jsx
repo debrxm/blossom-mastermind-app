@@ -1,17 +1,23 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, TextInput } from "react-native";
+import { View, Text, TextInput } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import CustomPopUp from "../../components/CustomPopUp/CustomPopUp";
-import { COLORS } from "../../constants/Colors";
 import { Height } from "../../constants/Layout";
+import {
+  setAge,
+  setGender,
+  setMaritalStatus,
+} from "../../redux/SetupForm/actions";
 import CustomSelect from "../CustomSelect/CustomSelect";
 
 import { styles } from "./styles";
 
 const PersonalDetailsForm = ({}) => {
+  const age = useSelector(({ setUp }) => setUp.age);
+  const gender = useSelector(({ setUp }) => setUp.gender);
+  const marital_status = useSelector(({ setUp }) => setUp.marital_status);
   const [errorMessage, setErrorMessage] = useState("");
-  const [age, setAge] = useState();
-  const [gender, setGender] = useState();
-  const [maritalStatus, setMaritalStatus] = useState();
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -50,7 +56,7 @@ const PersonalDetailsForm = ({}) => {
             autoCapitalize="none"
             onChangeText={(e) => {
               setErrorMessage("");
-              setAge(e);
+              dispatch(setAge(e));
             }}
             value={age}
           />
@@ -63,7 +69,9 @@ const PersonalDetailsForm = ({}) => {
             { label: `Male`, value: `male` },
           ]}
           value={gender}
-          onValueChange={setGender}
+          onValueChange={(e) => {
+            dispatch(setGender(e));
+          }}
         />
         <CustomSelect
           label="Marital Status"
@@ -73,8 +81,10 @@ const PersonalDetailsForm = ({}) => {
             { label: `Married`, value: `married` },
             { label: `Divorced`, value: `divorced` },
           ]}
-          value={maritalStatus}
-          onValueChange={setMaritalStatus}
+          value={marital_status}
+          onValueChange={(e) => {
+            dispatch(setMaritalStatus(e));
+          }}
         />
       </View>
     </>

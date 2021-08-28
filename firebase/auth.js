@@ -3,7 +3,6 @@ import firebase, { auth, firestore } from "./config";
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
   const userRef = firestore.doc(`users/${userAuth.uid}`);
-  // const usersRef = firebase.database().ref("users");
   const snapShot = await userRef.get();
   if (!snapShot.exists) {
     const { email, emailVerified, phoneNumber, uid } = userAuth;
@@ -24,6 +23,19 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     } catch (error) {
       auth.currentUser.delete();
       console.log("Error creating user profile");
+    }
+  }
+  return userRef;
+};
+export const onSubmitSetupForm = async (id, data, setLoading) => {
+  const userRef = firestore.doc(`users/${id}`);
+  const snapShot = await userRef.get();
+  if (snapShot.exists) {
+    try {
+      await userRef.update(data);
+      setLoading(false);
+    } catch (error) {
+      console.log("Error setting up user profile");
     }
   }
   return userRef;
