@@ -17,17 +17,10 @@ import ForgotPassword from "../screens/ForgotPassword/ForgotPassword";
 import { auth, firestore } from "../firebase/config";
 import { createUserProfileDocument } from "../firebase/auth";
 import { setCurrentUser, toggleHasNoty } from "../redux/user/actions";
+import CompleteAccountCreation from "../screens/CompleteAccountCreation/CompleteAccountCreation";
 
 function Navigation({ colorScheme }) {
   const currentUser = useSelector(({ user }) => user.currentUser);
-  // const currentUser = {
-  //   id: "jhgsysg77",
-  //   first_name: "Sam",
-  //   last_name: "Jackson",
-  //   email: "ibrahxxm@gmail.com",
-  //   phone: "08117671213",
-  // };
-  console.log(currentUser);
   const notificationListener = useRef();
   const responseListener = useRef();
   const dispatch = useDispatch();
@@ -89,7 +82,15 @@ function Navigation({ colorScheme }) {
     };
   }, [""]);
   const renderer = () => {
-    return currentUser ? <RootNavigator /> : <AuthNavigator />;
+    if (currentUser) {
+      return currentUser.isAccountReady ? (
+        <RootNavigator />
+      ) : (
+        <CompleteAccountCreationNavigator />
+      );
+    } else {
+      return <AuthNavigator />;
+    }
   };
   return (
     <NavigationContainer
@@ -141,6 +142,22 @@ function AuthNavigator() {
         options={{ title: "Reset Password" }}
       />
     </AuthStack.Navigator>
+  );
+}
+
+const CompleteAccountCreationStack = createStackNavigator();
+
+function CompleteAccountCreationNavigator() {
+  return (
+    <CompleteAccountCreationStack.Navigator
+      screenOptions={{ headerShown: false }}
+    >
+      <CompleteAccountCreationStack.Screen
+        name="Root"
+        component={CompleteAccountCreation}
+        options={{ headerShown: false }}
+      />
+    </CompleteAccountCreationStack.Navigator>
   );
 }
 

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-// import { cxlxrs } from "../../constants/Colors";
+import { COLORS } from "../../constants/Colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -75,7 +75,6 @@ export const styles = StyleSheet.create({
     fontSize: 14,
   },
   btnText: {
-    fontFamily: "FiraCode-Regular",
     fontSize: 14,
   },
   btnStyle: {
@@ -84,6 +83,11 @@ export const styles = StyleSheet.create({
   payMethodBtn: {
     height: 40,
     width: "60%",
+    paddingVertical: 10,
     borderRadius: 30,
+    marginVertical: 5,
+    backgroundColor: COLORS.white,
+    position: "absolute",
+    bottom: 80,
   },
 });

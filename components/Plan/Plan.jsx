@@ -28,7 +28,7 @@ export default function Plan({ index, selected, setSelected, customStyles }) {
           <View style={styles.productCardImageContainer}>
             <Image
               style={styles.productCardImage}
-              source={require("../../assets/logos/bb.png")}
+              source={require("../../assets/images/logo.png")}
             />
           </View>
           <View style={styles.cardInfo}>

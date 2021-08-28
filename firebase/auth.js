@@ -2,7 +2,6 @@ import firebase, { auth, firestore } from "./config";
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
-  console.log("It's a wrap bois");
   const userRef = firestore.doc(`users/${userAuth.uid}`);
   // const usersRef = firebase.database().ref("users");
   const snapShot = await userRef.get();
@@ -13,7 +12,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       id: uid,
       email,
       emailVerified,
-      phoneVerified: true,
+      isAccountReady: false,
+      phoneVerified: false,
       joined,
       location: "",
       gender: "",

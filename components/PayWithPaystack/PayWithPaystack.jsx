@@ -1,86 +1,69 @@
-import React, { useState, useRef } from "react";
-import PaystackWebView from "react-native-paystack-webview";
-import { Modal } from "react-native";
-import { paystackKeys } from "../../configs/apiKeys";
-import { FUND_WALLET, GET_WALLET } from "../../redux/investment/actionCreator";
-import { useDispatch, connect, useSelector } from "react-redux";
+import React, { useEffect, useRef } from "react";
+import ReactNativePaystackWebviewModule, {
+  Paystack,
+  paystackProps,
+} from "react-native-paystack-webview";
+import { TouchableOpacity, Text, View } from "react-native";
+import { paystackTestKeys } from "../../configs/apiKeys";
+import { useDispatch } from "react-redux";
 import AppButton from "../AppButton/AppButton";
-const uuid = require("react-native-uuid");
 
 import { styles } from "./styles";
+import { COLORS } from "../../constants/Colors";
 
-const PayWithPaystack = ({
-  topUp,
-  amount,
-  handleCreateInvoice,
-  wallet,
-  FUND_WALLET,
-}) => {
-  const childRef = useRef();
-  const [visible, setVisible] = useState(false);
-  const { user, client } = useSelector(({ Auth }) => Auth);
-  const [cancel, setCancel] = useState("");
-  const dispatch = useDispatch();
-  const handleWebViewMessage = (e) => {
-    console.log("WALLET VALUES ===:", e);
-    if (wallet && !cancel) {
-      return fundWallet();
-    }
-    if (topUp) {
-      return fundWallet();
-    }
-    handleCreateInvoice();
-  };
+const PayWithPaystack = ({ amount, label }) => {
+  useEffect(() => {});
 
-  const fundWallet = async () => {
-    setVisible(true);
+  const paystackWebViewRef = useRef();
+  const onSuccess = async () => {
     try {
-      await FUND_WALLET(user.id, { amount: amount });
-      await GET_WALLET(user.id);
-      setVisible(false);
-      // `Transaction completed, wallet has been credited with ${amount}`
     } catch (err) {
-      setVisible(false);
       // "Ooops an error occured wallet no funded" + " " + err,
     }
   };
-
   return (
-    <>
-      <PaystackWebView
+    <View
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        position: "relative",
+        backgroundColor: COLORS.white,
+        bottom: 80,
+      }}
+    >
+      <Paystack
         showPayButton={false}
-        paystackKey={paystackKeys.public}
+        paystackKey={paystackTestKeys.public}
         amount={amount || 500000}
-        billingEmail="payment@boundlessservicesng.com"
+        billingEmail="payment@blossommatermind.com"
         billingMobile="09787377462"
-        billingName="Boundless Investment"
+        billingName="Blossom Mastermind International"
         ActivityIndicatorColor="green"
         SafeAreaViewContainer={{ marginTop: 5 }}
         SafeAreaViewContainerModal={{ marginTop: 5 }}
-        ref={childRef}
+        ref={paystackWebViewRef}
         onCancel={(e) => {
-          setCancel("oooops transaction cancelled!");
+          console.log("oooops transaction cancelled!");
         }}
-        onSuccess={handleWebViewMessage}
+        onSuccess={onSuccess}
         autoStart={false}
-        refNumber={uuid.v1()} // this is only for cases where you have a reference number generated
       />
 
       <AppButton
         onPress={() => {
-          // if (!amount) return;
-          childRef.current.StartTransaction();
+          paystackWebViewRef.current.startTransaction();
         }}
-        title={topUp ? "Top Up" : "Pay With Paystack"}
+        title={label}
         customStyle={styles.payMethodBtn}
         textStyle={{
           textTransform: "capitalize",
           fontWeight: "400",
-          fontSize: 12,
+          fontSize: 15,
+          color: COLORS.white,
         }}
       />
-    </>
+    </View>
   );
 };
 
-export default connect(null, { FUND_WALLET })(PayWithPaystack);
+export default PayWithPaystack;

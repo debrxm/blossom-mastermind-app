@@ -24,7 +24,7 @@ const ForgotPassword = () => {
     try {
       await auth.sendPasswordResetEmail(email);
       navigation.navigate("Login");
-      setLoading(false);
+      setLoading(FA5Styletrue);
     } catch (error) {
       error.code === "auth/invalid-email"
         ? setErrorMessage("The email address is badly formatted.")

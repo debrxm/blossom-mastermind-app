@@ -1,28 +1,8 @@
-export const clienApiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDY2OTEsImZpcnN0X25hbWUiOiJJZG93dSIsImxhc3RfbmFtZSI6Ik90aSIsImVtYWlsIjoiQm91bmRsZXNzbXVsdGlzZXJ2aWNlc3NvbHV0aW9uQGdtYWlsLmNvbSIsImF2YXRhciI6Ii9yZXNvdXJjZXMvc3RvcmFnZS9hdmF0YXJzL1RzTFl4cGdlLmpwZWciLCJwaG9uZV9udW1iZXIiOiIwMzgzOTQ4OTM0MiIsInJlZmVyX2NvZGUiOm51bGwsImNvbXBhbnlfaWQiOjExOSwiY291bnRyeV9jdXJyZW5jeSI6Ik5haXJhIiwiaWF0IjoxNjExNjQ5NDE4fQ.tfiG_NzxrYW90D76krfeNuCBITPBiNkkAPY-8r8bEA4";
-// "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImZpcnN0X25hbWUiOiJPbHV3ZW1pbW8iLCJsYXN0X25hbWUiOiJPbHV3b2xlIiwiZW1haWwiOiJ2aWNzcmVsQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1BBUkVOVF9DT01QQU5ZX0FETUlOIiwiYXZhdGFyIjpudWxsLCJwaG9uZV9udW1iZXIiOiIwOTA3ODY1NDM1NiIsInJlZmVyX2NvZGUiOm51bGwsImNvbXBhbnlfaWQiOjQsImNvdW50cnlfY3VycmVuY3kiOiJEb2xsYXIiLCJpYXQiOjE2MDgzODM2MTZ9.hToA4K2aIi7Yya0cCVpcc0XXcptsMDgpytziXjhdvmc";
-export const companyKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImZpcnN0X25hbWUiOiJPbHV3ZW1pbW8iLCJsYXN0X25hbWUiOiJPbHV3b2xlIiwiZW1haWwiOiJ2aWNzcmVsQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1BBUkVOVF9DT01QQU5ZX0FETUlOIiwiYXZhdGFyIjpudWxsLCJwaG9uZV9udW1iZXIiOiIwOTA3ODY1NDM1NiIsInJlZmVyX2NvZGUiOm51bGwsImNvbXBhbnlfaWQiOjQsImNvdW50cnlfY3VycmVuY3kiOiJEb2xsYXIiLCJpYXQiOjE2MDgzODM2MTZ9.hToA4K2aIi7Yya0cCVpcc0XXcptsMDgpytziXjhdvmc";
-export const apiKey = "AIzaSyAvTjfTVaIDFDNUSXRXi2ldAwgW99lFwOc";
-export const paystackKeys = {
-    // public: "pk_test_f182ded5cc9ad1c8d9de5e3eaf8c386e5be3c301",
-    // secret: "sk_test_19d6fb113662961b458fdc268fc6878977fefeab"
-    public: "pk_live_ea6e4f22e91f56bc02821f027bb07761b7b819bd",
-    secret: "sk_live_4551c778c1e01c2248911d7b176cb4de7c17477d"
-}
-
-
-
-// public: "pk_test_f182ded5cc9ad1c8d9de5e3eaf8c386e5be3c301",
-//     secret: "sk_test_19d6fb113662961b458fdc268fc6878977fefeab"
-
-
-
-
-// Secret key - sk_live_4551c778c1e01c2248911d7b176cb4de7c17477d
-
-// Public key -
-// pk_live_ea6e4f22e91f56bc02821f027bb07761b7b819bd
-
-
-
-// public: "pk_live_ea6e4f22e91f56bc02821f027bb07761b7b819bd",
-// secret: "sk_live_4551c778c1e01c2248911d7b176cb4de7c17477d"
+export const paystackLiveKeys = {
+  public: "pk_live_3c6361bc343804870e28a34df5babac76ce12167",
+  secret: "sk_live_20cf413bd3204a341449253a904ce1f56b853ffed",
+};
+export const paystackTestKeys = {
+  public: "pk_test_3211d1f3f7d23a949f1971a99ca99a083d4fc0c5",
+  secret: "sk_test_f6740dd14bd7b6fe60e8ea7464205bad7b0009e8",
+};

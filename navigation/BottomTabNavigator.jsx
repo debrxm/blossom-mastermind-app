@@ -16,6 +16,7 @@ import { Text, View } from "../components/Themed/Themed";
 import Packages from "../screens/Packages/Packages";
 import Investment from "../screens/Investment/Investment";
 import About from "../screens/About/About";
+import PackageView from "../screens/PackageView/PackageView";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -257,13 +258,13 @@ function PackageScreenNavigator() {
           headerShown: false,
         }}
       />
-      {/* <ScreenStack.Screen
+      <ScreenStack.Screen
         name="PackageView"
         component={PackageView}
         options={{
           headerShown: false,
         }}
-      /> */}
+      />
     </ScreenStack.Navigator>
   );
 }

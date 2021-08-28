@@ -10,7 +10,7 @@ export default function ProductPreview({ data, customStyles }) {
   const navigation = useNavigation();
 
   const onPress = () => {
-    navigation.navigate("ProductView");
+    navigation.navigate("PackageView", { data });
   };
   return (
     <>

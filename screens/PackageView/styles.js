@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     alignItems: "center",
-    paddingTop: 40,
+    paddingTop: 50,
     paddingBottom: 15,
     paddingLeft: 20,
     paddingRight: 20,
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   },
   routeTitle: {
     color: "#111111",
-    fontSize: 14,
+    fontSize: 16,
     letterSpacing: 1,
   },
   productName: {
@@ -72,8 +72,8 @@ export const styles = StyleSheet.create({
   },
   investNowBtn: {
     marginTop: "auto",
-    width: "90%",
-    marginBottom: 10,
+    width: "70%",
+    marginBottom: 80,
     borderRadius: 30,
   },
 });
