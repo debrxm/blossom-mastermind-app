@@ -24,7 +24,7 @@ export const COLORS = {
   black: "#000000",
   lightTextColor: "#9E9E9E",
   darkTextColor: "#010101",
-  success: "#4CAF50",
+  success: "#18986B",
   warn: "#FFC107",
   danger: "#FF5722",
   inactiveTintColor: "#C0D4DB",

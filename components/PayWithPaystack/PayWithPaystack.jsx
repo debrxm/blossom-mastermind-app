@@ -1,23 +1,27 @@
 import React, { useEffect, useRef } from "react";
-import ReactNativePaystackWebviewModule, {
-  Paystack,
-  paystackProps,
-} from "react-native-paystack-webview";
-import { TouchableOpacity, Text, View } from "react-native";
+import { Paystack } from "react-native-paystack-webview";
+import { View } from "react-native";
 import { paystackTestKeys } from "../../configs/apiKeys";
-import { useDispatch } from "react-redux";
 import AppButton from "../AppButton/AppButton";
-
-import { styles } from "./styles";
 import { COLORS } from "../../constants/Colors";
 
-const PayWithPaystack = ({ amount, label }) => {
+import { styles } from "./styles";
+
+const PayWithPaystack = ({
+  amount,
+  label,
+  setSuccess,
+  setFailure,
+  setModalVisible,
+}) => {
   useEffect(() => {});
 
   const paystackWebViewRef = useRef();
   const onSuccess = async () => {
+    setModalVisible(true);
     try {
     } catch (err) {
+      setFailure(true);
       // "Ooops an error occured wallet no funded" + " " + err,
     }
   };

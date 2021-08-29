@@ -18,37 +18,35 @@ export default function ProductPreview({ data, customStyles }) {
         <View style={styles.plan}>
           <Text style={styles.planText}>ROI: {data.roi}%</Text>
         </View>
-
-        <View style={styles.cardInfo}>
-          <View>
-            <Text style={styles.cardInfoName}>{data.name}</Text>
-            <View style={styles.cardInfoDuration}>
-              <Text
-                style={[styles.cardInfoDurationLightText, { marginBottom: 6 }]}
-              >
-                Duration
-              </Text>
-              <Text
-                style={[styles.cardInfoDurationBoldText, { marginBottom: 6 }]}
-              >
-                {data.duration}
-              </Text>
-            </View>
-          </View>
-          <View style={styles.productCardImageContainer}>
-            <Image
-              style={styles.productCardImage}
-              source={require("../../assets/images/logo.png")}
-              resizeMode="contain"
-            />
-          </View>
+        <View style={styles.productCardImageContainer}>
+          {/* <Image
+            style={styles.productCardImage}
+            source={require("../../assets/logos/bb.png")}
+          /> */}
         </View>
-        <View style={styles.cardInfoCost}>
-          <Text style={styles.cardInfoCostLightText}>Cost</Text>
-          <Text style={styles.cardInfoCostBoldText}>₦{data.cost}</Text>
+        <View style={styles.cardInfo}>
+          <Text style={styles.cardInfoName}>{data.name}</Text>
+          <Text style={[styles.cardInfoLightText, { marginBottom: 6 }]}>
+            Duration: {data.duration}
+          </Text>
+          <Text style={styles.cardInfoLightText}>Min: ₦{data.cost}</Text>
         </View>
         <View style={styles.productCardFooter}>
           <View style={styles.productCardFooterButtons}>
+            <AppButton
+              onPress={onPress}
+              title="Invest Now"
+              customStyle={{
+                ...styles.productCardFooterBtn,
+                backgroundColor: "#ffffff",
+              }}
+              textStyle={{
+                textTransform: "capitalize",
+                fontWeight: "400",
+                fontSize: 12,
+                color: COLORS.tint,
+              }}
+            />
             <AppButton
               onPress={onPress}
               title="View Details"

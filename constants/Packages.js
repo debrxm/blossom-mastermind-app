@@ -22,7 +22,7 @@ export const Plans = [
     package: "",
     duration: "12 months",
     no_return_month: ["11th"],
-    roi: 25,
+    roi: 50,
     cost: 100000,
     montly_return: 5000,
     total_return: 150000,

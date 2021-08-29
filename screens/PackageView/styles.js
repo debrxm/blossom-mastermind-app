@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     minHeight: 80,
-    backgroundColor: COLORS.tint,
+    backgroundColor: "#7C4F86",
     justifyContent: "space-between",
   },
   routeTitle: {
@@ -32,8 +32,10 @@ export const styles = StyleSheet.create({
     width: Width,
     alignItems: "center",
     justifyContent: "space-evenly",
-    backgroundColor: COLORS.tint,
+    backgroundColor: "#7C4F86",
     paddingBottom: 50,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
   },
   productName: {
     color: COLORS.cloudyWhite,
@@ -42,7 +44,7 @@ export const styles = StyleSheet.create({
   },
   productRoi: {
     color: COLORS.cloudyWhite,
-    fontSize: 20,
+    fontSize: 14,
     paddingVertical: 20,
   },
   planBox: {

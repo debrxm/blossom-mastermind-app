@@ -9,15 +9,19 @@ import PayWithPaystack from "../../components/PayWithPaystack/PayWithPaystack";
 import { useSelector } from "react-redux";
 import HelperDialog from "../../components/HelperDialog/HelperDialog";
 import { Width } from "../../constants/Layout";
+import PaymentSuccessful from "../../components/PaymentSuccessful/PaymentSuccessful";
 const PackageView = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const data = route.params.data;
   const user = useSelector(({ user }) => user.currentUser);
   const [dialogVisible, setDialogVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [active, setActive] = useState("plans");
   const [payLoading, setPayLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
   useEffect(() => {
     setErrorMessage("");
   }, []);
@@ -79,7 +83,7 @@ const PackageView = () => {
             marginTop: -40,
           }}
         >
-          <View style={styles.planBox}>
+          <View style={[styles.planBox, { borderBottomLeftRadius: 30 }]}>
             <Text style={styles.planBoxBoldText}>Cost</Text>
             <Text style={styles.planBoxLightText}>₦{data.cost}</Text>
           </View>
@@ -87,9 +91,16 @@ const PackageView = () => {
             <Text style={styles.planBoxBoldText}>Duration</Text>
             <Text style={styles.planBoxLightText}>{data.duration}</Text>
           </View>
-          <View style={styles.planBox}>
-            <Text style={styles.planBoxBoldText}>Profit</Text>
-            <Text style={styles.planBoxLightText}>
+          <View
+            style={[
+              styles.planBox,
+              { backgroundColor: "#E4DAD2", borderBottomRightRadius: 30 },
+            ]}
+          >
+            <Text style={[styles.planBoxBoldText, { color: "#7C4F86" }]}>
+              Profit
+            </Text>
+            <Text style={[styles.planBoxLightText, { color: "#7C4F86" }]}>
               ₦{data.total_return - data.cost}
             </Text>
           </View>
@@ -118,9 +129,16 @@ const PackageView = () => {
       </ScrollView>
       <PayWithPaystack
         amount={data.cost}
+        setModalVisible={setModalVisible}
+        setSuccess={setSuccess}
+        setFailure={setFailure}
         label={`Invest ₦${data.cost} Now`}
         handleCreateInvoice={() => handleCreateInvoice()}
         loading={payLoading}
+      />
+      <PaymentSuccessful
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
       />
     </>
   );

@@ -92,7 +92,7 @@ const Home = () => {
       <View style={styles.container}>
         <View style={styles.wallet}>
           <View style={styles.walletMainTextsContainer}>
-            <Text style={styles.walletMainTextLight}>Your Balance</Text>
+            <Text style={styles.walletMainTextLight}>Total Invested</Text>
             <Text style={styles.walletMainTextBold}>{`₦ ${"00.00"}`}</Text>
           </View>
           {/* <View style={styles.walletButtons}>
