@@ -19,6 +19,7 @@ export default {
 };
 export const COLORS = {
   tint: "#743c79",
+  lightTint: "#8F6593",
   cloudyWhite: "#f5f6f7",
   white: "#ffffff",
   black: "#000000",

@@ -14,6 +14,50 @@ export const Plans = [
         month: "1st",
         amount: 2500,
       },
+      {
+        month: "2nd",
+        amount: 2500,
+      },
+      {
+        month: "3rd",
+        amount: 2500,
+      },
+      {
+        month: "4th",
+        amount: 2500,
+      },
+      {
+        month: "5th",
+        amount: 2500,
+      },
+      {
+        month: "6th",
+        amount: 2500,
+      },
+      {
+        month: "7th",
+        amount: 2500,
+      },
+      {
+        month: "8th",
+        amount: 2500,
+      },
+      {
+        month: "9th",
+        amount: 2500,
+      },
+      {
+        month: "10th",
+        amount: 2500,
+      },
+      {
+        month: "11th",
+        amount: 0,
+      },
+      {
+        month: "12nd",
+        amount: 2500,
+      },
     ],
   },
   {
@@ -31,6 +75,50 @@ export const Plans = [
         month: "1st",
         amount: 5000,
       },
+      {
+        month: "2nd",
+        amount: 5000,
+      },
+      {
+        month: "3rd",
+        amount: 5000,
+      },
+      {
+        month: "4th",
+        amount: 5000,
+      },
+      {
+        month: "5th",
+        amount: 5000,
+      },
+      {
+        month: "6th",
+        amount: 5000,
+      },
+      {
+        month: "7th",
+        amount: 5000,
+      },
+      {
+        month: "8th",
+        amount: 5000,
+      },
+      {
+        month: "9th",
+        amount: 5000,
+      },
+      {
+        month: "10th",
+        amount: 5000,
+      },
+      {
+        month: "11th",
+        amount: 0,
+      },
+      {
+        month: "12nd",
+        amount: 100000,
+      },
     ],
   },
   {
@@ -47,6 +135,50 @@ export const Plans = [
       {
         month: "1st",
         amount: 10000,
+      },
+      {
+        month: "2nd",
+        amount: 10000,
+      },
+      {
+        month: "3rd",
+        amount: 10000,
+      },
+      {
+        month: "4th",
+        amount: 10000,
+      },
+      {
+        month: "5th",
+        amount: 10000,
+      },
+      {
+        month: "6th",
+        amount: 10000,
+      },
+      {
+        month: "7th",
+        amount: 10000,
+      },
+      {
+        month: "8th",
+        amount: 10000,
+      },
+      {
+        month: "9th",
+        amount: 10000,
+      },
+      {
+        month: "10th",
+        amount: 10000,
+      },
+      {
+        month: "11th",
+        amount: 0,
+      },
+      {
+        month: "12nd",
+        amount: 200000,
       },
     ],
   },

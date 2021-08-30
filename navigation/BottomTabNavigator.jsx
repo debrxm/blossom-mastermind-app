@@ -244,6 +244,20 @@ function HomeScreenNavigator() {
           headerShown: false,
         }}
       />
+      <ScreenStack.Screen
+        name="Packages"
+        component={Packages}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <ScreenStack.Screen
+        name="PackageView"
+        component={PackageView}
+        options={{
+          headerShown: false,
+        }}
+      />
     </ScreenStack.Navigator>
   );
 }
@@ -274,7 +288,20 @@ function InvestmentScreenNavigator() {
       <ScreenStack.Screen
         name="Investments"
         component={Investment}
-        component={Investment}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <ScreenStack.Screen
+        name="Packages"
+        component={Packages}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <ScreenStack.Screen
+        name="PackageView"
+        component={PackageView}
         options={{
           headerShown: false,
         }}

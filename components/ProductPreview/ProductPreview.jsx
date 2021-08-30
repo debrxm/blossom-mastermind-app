@@ -15,10 +15,20 @@ export default function ProductPreview({ data, customStyles }) {
   return (
     <>
       <View style={[styles.productCard, { ...customStyles }]}>
-        <View style={styles.plan}>
-          <Text style={styles.planText}>ROI: {data.roi}%</Text>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <View style={styles.plan}>
+            <Text style={styles.planText}>ROI: {data.roi}%</Text>
+          </View>
+          <View style={styles.cardInfoCost}>
+            <Text style={styles.cardInfoCostBoldText}>₦{data.cost}</Text>
+          </View>
         </View>
-
         <View style={styles.cardInfo}>
           <View>
             <Text style={styles.cardInfoName}>{data.name}</Text>
@@ -43,10 +53,7 @@ export default function ProductPreview({ data, customStyles }) {
             />
           </View>
         </View>
-        <View style={styles.cardInfoCost}>
-          <Text style={styles.cardInfoCostLightText}>Cost</Text>
-          <Text style={styles.cardInfoCostBoldText}>₦{data.cost}</Text>
-        </View>
+
         <View style={styles.productCardFooter}>
           <View style={styles.productCardFooterButtons}>
             <AppButton

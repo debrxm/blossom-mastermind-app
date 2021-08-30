@@ -5,7 +5,7 @@ import { COLORS } from "../../constants/Colors";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "transparent",
     paddingTop: 30,
   },
   contentContainer: {},
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 10,
     minHeight: 80,
-    backgroundColor: "#ffffff",
+    backgroundColor: "transparent",
     justifyContent: "space-between",
   },
   routeTitle: {
@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
   },
   modal: {
     flex: 1,
+    backgroundColor: "transparent",
   },
   step: {
     textAlign: "center",
@@ -66,11 +67,13 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     flexDirection: "row",
     justifyContent: "center",
+    backgroundColor: "transparent",
   },
   btn: {
     borderRadius: 5,
     width: "80%",
     borderRadius: 30,
+    backgroundColor: "transparent",
   },
   btnTxt: {
     fontSize: 14,

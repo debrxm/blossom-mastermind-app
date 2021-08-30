@@ -10,7 +10,9 @@ import {
   ScrollView,
   FlatList,
 } from "react-native";
+import ActiveInvestment from "../../components/ActiveInvestment/ActiveInvestment";
 import AppButton from "../../components/AppButton/AppButton";
+import ElapsedInvestment from "../../components/ElapsedInvestment/ElapsedInvestment";
 import { COLORS } from "../../constants/Colors";
 // import { COLORS } from "../../constants/Colors";
 import { Width } from "../../constants/Layout";
@@ -93,13 +95,13 @@ const Investment = () => {
               customStyle={{
                 ...styles.walletBtn,
                 backgroundColor:
-                  currentSlideIndex == 0 ? COLORS.white : COLORS.tint,
+                  currentSlideIndex == 0 ? COLORS.white : COLORS.lightTint,
               }}
               textStyle={{
                 textTransform: "capitalize",
                 fontWeight: "400",
                 fontSize: 12,
-                color: currentSlideIndex == 0 ? COLORS.tint : COLORS.white,
+                color: currentSlideIndex == 0 ? COLORS.lightTint : COLORS.white,
               }}
             />
             <AppButton
@@ -108,13 +110,13 @@ const Investment = () => {
               customStyle={{
                 ...styles.walletBtn,
                 backgroundColor:
-                  currentSlideIndex == 1 ? COLORS.white : COLORS.tint,
+                  currentSlideIndex == 1 ? COLORS.white : COLORS.lightTint,
               }}
               textStyle={{
                 textTransform: "capitalize",
                 fontWeight: "400",
                 fontSize: 12,
-                color: currentSlideIndex == 1 ? COLORS.tint : COLORS.white,
+                color: currentSlideIndex == 1 ? COLORS.lightTint : COLORS.white,
               }}
             />
           </View>
@@ -135,56 +137,3 @@ const Investment = () => {
 };
 
 export default Investment;
-
-const ActiveInvestment = () => {
-  const navigation = useNavigation();
-  const [hasInvestment] = useState(false);
-  return (
-    !hasInvestment && (
-      <View style={styles.noInvestment}>
-        <Text style={[styles.noDataText, styles.noInvestmentText]}>
-          You currently have no invetsment.
-        </Text>
-        <AppButton
-          onPress={() => navigation.navigate("Packages")}
-          title="Start Investing"
-          customStyle={{
-            backgroundColor: "#ffffff",
-          }}
-          textStyle={{
-            textTransform: "capitalize",
-            fontWeight: "400",
-            fontSize: 12,
-            color: COLORS.tint,
-          }}
-        />
-      </View>
-    )
-  );
-};
-const ElapsedInvestment = () => {
-  const navigation = useNavigation();
-  const [hasInvestment] = useState(false);
-  return (
-    !hasInvestment && (
-      <View style={styles.noInvestment}>
-        <Text style={[styles.noDataText, styles.noInvestmentText]}>
-          You currently have no invetsment.
-        </Text>
-        <AppButton
-          onPress={() => navigation.navigate("Packages")}
-          title="Start Investing"
-          customStyle={{
-            backgroundColor: "#ffffff",
-          }}
-          textStyle={{
-            textTransform: "capitalize",
-            fontWeight: "400",
-            fontSize: 12,
-            color: COLORS.tint,
-          }}
-        />
-      </View>
-    )
-  );
-};

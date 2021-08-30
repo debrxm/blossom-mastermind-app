@@ -1,6 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
-import { Modal, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 
 import { styles } from "./styles";
 import { COLORS } from "../../constants/Colors";
@@ -10,6 +16,7 @@ import { useSelector } from "react-redux";
 import HelperDialog from "../../components/HelperDialog/HelperDialog";
 import { Width } from "../../constants/Layout";
 import PaymentSuccessful from "../../components/PaymentSuccessful/PaymentSuccessful";
+import PaymentBreakdownTable from "../../components/PaymentBreakdownTable/PaymentBreakdownTable";
 const PackageView = () => {
   const navigation = useNavigation();
   const route = useRoute();
@@ -57,18 +64,10 @@ const PackageView = () => {
         noTitle
       >
         <View style={{ flex: 1, justifyContent: "center" }}>
-          <PayWithPaystack
-            amount={data.min_deposit}
-            invest
-            handleCreateInvoice={() => handleCreateInvoice(false, false, true)}
-            loading={payLoading}
-          />
+          <Text>Freebies</Text>
         </View>
       </HelperDialog>
-      <ScrollView
-        contentContainerStyle={styles.contentContainer}
-        style={styles.container}
-      >
+      <View style={styles.container}>
         <View style={styles.name_roi}>
           <Text style={styles.productName}>{data.name}</Text>
           <Text style={styles.productRoi}>ROI: {data.roi}%</Text>
@@ -83,36 +82,66 @@ const PackageView = () => {
             marginTop: -40,
           }}
         >
-          <View style={[styles.planBox, { borderBottomLeftRadius: 30 }]}>
-            <Text style={styles.planBoxBoldText}>Cost</Text>
-            <Text style={styles.planBoxLightText}>₦{data.cost}</Text>
-          </View>
-          <View style={styles.planBox}>
-            <Text style={styles.planBoxBoldText}>Duration</Text>
-            <Text style={styles.planBoxLightText}>{data.duration}</Text>
+          <View
+            style={[
+              styles.planBox,
+              { borderBottomLeftRadius: 30, backgroundColor: COLORS.lightTint },
+            ]}
+          >
+            <Text
+              style={[styles.planBoxBoldText, { color: COLORS.cloudyWhite }]}
+            >
+              Cost
+            </Text>
+            <Text
+              style={[styles.planBoxLightText, { color: COLORS.cloudyWhite }]}
+            >
+              ₦{data.cost}
+            </Text>
           </View>
           <View
             style={[
               styles.planBox,
-              { backgroundColor: "#E4DAD2", borderBottomRightRadius: 30 },
+              {
+                backgroundColor: COLORS.lightTint,
+              },
             ]}
           >
-            <Text style={[styles.planBoxBoldText, { color: "#7C4F86" }]}>
+            <Text
+              style={[styles.planBoxBoldText, { color: COLORS.cloudyWhite }]}
+            >
+              Duration
+            </Text>
+            <Text
+              style={[styles.planBoxLightText, { color: COLORS.cloudyWhite }]}
+            >
+              {data.duration}
+            </Text>
+          </View>
+          <View
+            style={[
+              styles.planBox,
+              {
+                backgroundColor: COLORS.lightTint,
+                borderBottomRightRadius: 30,
+              },
+            ]}
+          >
+            <Text
+              style={[styles.planBoxBoldText, { color: COLORS.cloudyWhite }]}
+            >
               Profit
             </Text>
-            <Text style={[styles.planBoxLightText, { color: "#7C4F86" }]}>
+            <Text
+              style={[styles.planBoxLightText, { color: COLORS.cloudyWhite }]}
+            >
               ₦{data.total_return - data.cost}
             </Text>
           </View>
         </View>
         <View style={styles.breakdown}>
           <Text style={styles.breakdownTitle}>Payment Breakdown</Text>
-          {/* <View style={styles.breakdownBox}>
-            <Text style={styles.breakdownBoxBoldText}>1st</Text>
-            <Text style={styles.breakdownBoxLightText}>
-              ₦{data.montly_return}
-            </Text>
-          </View> */}
+          <PaymentBreakdownTable data={data} />
         </View>
         {errorMessage !== "" ? (
           <CustomPopUp
@@ -126,7 +155,26 @@ const PackageView = () => {
             customTextStyles={{ color: "#ffffff" }}
           />
         ) : null}
-      </ScrollView>
+        <View style={styles.productCardImageContainer}>
+          <TouchableWithoutFeedback onPress={() => setDialogVisible(true)}>
+            <Image
+              style={styles.productCardImage}
+              source={require("../../assets/gifs/gift-box.gif")}
+              resizeMode="contain"
+            />
+          </TouchableWithoutFeedback>
+          <Text
+            style={{
+              fontSize: 10,
+              textAlign: "center",
+              color: COLORS.lightTextColor,
+              marginTop: -15,
+            }}
+          >
+            Freebies
+          </Text>
+        </View>
+      </View>
       <PayWithPaystack
         amount={data.cost}
         setModalVisible={setModalVisible}

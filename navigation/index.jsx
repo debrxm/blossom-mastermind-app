@@ -29,7 +29,11 @@ function Navigation({ colorScheme }) {
       if (User) {
         const userRef = await createUserProfileDocument(User);
         userRef.onSnapshot(async (snapShot) => {
-          const data = { id: snapShot.id, ...snapShot.data() };
+          const data = {
+            id: snapShot.id,
+            emailVerified: User.emailVerified,
+            ...snapShot.data(),
+          };
           dispatch(setCurrentUser(data));
           const notificationRef = await firestore
             .collection("notifications")

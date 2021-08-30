@@ -1,5 +1,6 @@
 import { Dimensions, StyleSheet } from "react-native";
 import { COLORS } from "../../constants/Colors";
+import { Width } from "../../constants/Layout";
 
 export const styles = StyleSheet.create({
   container: {
@@ -43,7 +44,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   wallet: {
-    minHeight: 120,
+    minHeight: 140,
     backgroundColor: COLORS.tint,
     margin: 10,
     marginTop: 20,
@@ -58,8 +59,9 @@ export const styles = StyleSheet.create({
   },
   walletMainTextLight: {
     fontSize: 12,
-    color: "#97989A",
-    marginBottom: 2,
+    color: COLORS.cloudyWhite,
+    textTransform: "uppercase",
+    marginBottom: 5,
   },
   walletMainTextBold: {
     color: COLORS.white,
@@ -68,7 +70,7 @@ export const styles = StyleSheet.create({
   walletButtons: {
     flexDirection: "row",
     marginTop: "auto",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     width: "100%",
     paddingHorizontal: 30,
     marginBottom: 5,
@@ -77,7 +79,7 @@ export const styles = StyleSheet.create({
     height: 35,
     paddingVertical: 10,
     borderRadius: 30,
-    width: "40%",
+    width: "90%",
   },
   sectionContainer: {
     marginVertical: 20,
@@ -115,22 +117,24 @@ export const styles = StyleSheet.create({
     fontWeight: "600",
   },
   tips: {
-    marginTop: "auto",
+    // marginTop: "auto",
   },
   tipContainer: {
+    width: Width - 20,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#dddcdb",
     borderRadius: 20,
+    backgroundColor: COLORS.cloudyWhite,
     padding: 10,
     position: "relative",
+    bottom: 80,
   },
   tipImageContainer: {
     height: 45,
     width: 45,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#ffffff",
+    backgroundColor: COLORS.warn,
     borderRadius: 20,
     elevation: 3,
   },
@@ -149,10 +153,17 @@ export const styles = StyleSheet.create({
     width: 26,
   },
   tipTexts: {
+    flex: 1,
     marginLeft: 10,
+    color: COLORS.black,
   },
-  tipTextBold: {},
+  tipTextBold: {
+    textAlign: "center",
+    color: COLORS.black,
+  },
   tipTextLight: {
+    textAlign: "center",
+    color: COLORS.black,
     letterSpacing: 0.05,
     fontSize: 12,
   },

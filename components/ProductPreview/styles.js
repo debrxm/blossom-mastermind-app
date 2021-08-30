@@ -1,37 +1,38 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { COLORS } from "../../constants/Colors";
 export const styles = StyleSheet.create({
   productCard: {
     width: "95%",
-    height: 250,
+    height: 200,
     position: "relative",
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor: COLORS.cloudyWhite,
+    backgroundColor: "#ffffff",
     elevation: 3,
     borderRadius: 12,
-    padding: 10,
+    padding: 20,
+    paddingBottom: 10,
     position: "relative",
   },
   plan: {
     paddingHorizontal: 10,
-    height: 25,
+    height: 20,
     width: 80,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: COLORS.tint,
+    backgroundColor: COLORS.lightTint,
     borderRadius: 25,
     elevation: 3,
   },
   planText: { color: "#ffffff", fontSize: 10 },
   productCardImageContainer: {
     borderRadius: 10,
-    height: 79,
-    width: 79,
+    height: 50,
+    width: 50,
   },
   productCardImage: {
-    height: 60,
-    width: 60,
+    height: 50,
+    width: 50,
     borderRadius: 12,
     resizeMode: "contain",
   },
@@ -44,22 +45,22 @@ export const styles = StyleSheet.create({
   },
   cardInfoName: {
     color: COLORS.darkTextColor,
-    fontSize: 20,
+    fontSize: 18,
     marginVertical: 10,
   },
   cardInfoLightText: {
     color: "#97989A",
-    fontSize: 15,
+    fontSize: 13,
   },
   cardInfoDuration: {
-    paddingTop: 10,
+    paddingTop: 0,
   },
   cardInfoDurationLightText: {
     fontSize: 15,
     color: COLORS.lightTextColor,
   },
   cardInfoDurationBoldText: {
-    fontSize: 20,
+    fontSize: 16,
     color: COLORS.tint,
   },
   cardInfoCost: {
@@ -77,16 +78,11 @@ export const styles = StyleSheet.create({
   },
   productCardFooter: {
     width: "100%",
-    position: "absolute",
-    bottom: 12,
-    left: 9,
   },
   productCardFooterButtons: {
     flexDirection: "row",
-    marginTop: "auto",
     justifyContent: "center",
     width: "100%",
-    paddingHorizontal: 10,
   },
   productCardFooterBtn: {
     height: 35,

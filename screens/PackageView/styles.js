@@ -5,8 +5,7 @@ import { Height, Width } from "../../constants/Layout";
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
-  },
-  contentContainer: {
+    position: "relative",
     flex: 1,
     alignItems: "center",
   },
@@ -19,7 +18,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     minHeight: 80,
-    backgroundColor: "#7C4F86",
+    backgroundColor: COLORS.tint,
     justifyContent: "space-between",
   },
   routeTitle: {
@@ -32,7 +31,7 @@ export const styles = StyleSheet.create({
     width: Width,
     alignItems: "center",
     justifyContent: "space-evenly",
-    backgroundColor: "#7C4F86",
+    backgroundColor: COLORS.tint,
     paddingBottom: 50,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -67,7 +66,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   breakdown: {
-    marginTop: 40,
+    marginTop: 30,
   },
   breakdownTitle: {
     color: COLORS.lightTextColor,
@@ -75,6 +74,7 @@ export const styles = StyleSheet.create({
     fontSize: 13,
     letterSpacing: 2,
     fontWeight: "600",
+    textAlign: "center",
   },
   breakdownBox: {
     width: Width / 5,
@@ -94,6 +94,49 @@ export const styles = StyleSheet.create({
   },
   breakdownBoxLightText: {
     fontSize: 16,
+  },
+  tableHeadText: {
+    fontSize: 16,
+  },
+  tableRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginVertical: 10,
+  },
+  tableText: {
+    textTransform: "capitalize",
+    fontWeight: "400",
+    fontSize: 12,
+    color: COLORS.black,
+    width: (Width - 20) / 3,
+    textAlign: "right",
+  },
+  tableTextLong: {
+    textAlign: "left",
+    width: (Width - 20) / 2,
+  },
+  tableBodyText: {},
+  tableFooter: {
+    marginTop: 30,
+  },
+  tableSubFooter: {
+    marginTop: 0,
+  },
+  productCardImageContainer: {
+    borderRadius: 10,
+    backgroundColor: "transparent",
+    position: "absolute",
+    // bottom: 60,
+    right: 0,
+    top: -8,
+  },
+  productCardImage: {
+    height: 70,
+    width: 70,
+    borderRadius: 12,
+    resizeMode: "contain",
+    borderRadius: 100,
   },
   selectPlanText: {
     fontSize: 15,
