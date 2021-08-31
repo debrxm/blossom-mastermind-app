@@ -1,63 +1,62 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+import { COLORS } from "../../constants/Colors";
+import { Width } from "../../constants/Layout";
 export const styles = StyleSheet.create({
   recommenedCard: {
-    width: Dimensions.get("screen").width - 30,
-    height: 200,
+    width: Width / 1.5,
+    height: 260,
     position: "relative",
     marginRight: 8,
     backgroundColor: "#ffffff",
     elevation: 3,
     borderRadius: 12,
     padding: 10,
-    position: "relative",
-  },
-  plan: {
-    position: "absolute",
-    top: 20,
-    right: 20,
-    width: 25,
-    height: 25,
-    justifyContent: "center",
+    paddingTop: 0,
     alignItems: "center",
-    backgroundColor: "#cd9931",
-    borderRadius: 15,
-    elevation: 3,
   },
-  planText: { color: "#ffffff" },
-  recommenedCardImageContainer: {
-    backgroundColor: "#ffffff",
-    borderRadius: 10,
-    paddingLeft: 10,
-  },
-  recommenedCardImage: {
+  pattern: {
+    height: "30%",
+    width: Width / 1.5,
     borderRadius: 12,
   },
+  recommenedCardImage: {
+    height: "100%",
+    width: "100%",
+    borderRadius: 20,
+  },
+
+  name: {
+    textAlign: "center",
+    fontSize: 25,
+  },
+  duration: {
+    textAlign: "center",
+    fontSize: 15,
+    color: COLORS.lightTextColor,
+  },
   cardInfo: {
+    alignItems: "center",
+  },
+  cost: {
+    textAlign: "center",
+    fontSize: 25,
+    color: COLORS.tint,
+  },
+  roiContainer: {
     paddingHorizontal: 10,
+    height: 20,
+    width: 80,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: COLORS.lightTint,
+    borderRadius: 25,
+    elevation: 3,
   },
-  cardInfoName: {
-    color: "#97989A",
-    fontFamily: "FiraCode-SemiBold",
-    fontSize: 16,
-    marginVertical: 10,
-  },
-  recommenedCardFooter: {
-    width: "100%",
-    position: "absolute",
-    bottom: 12,
-    left: 9,
-  },
-  recommenedCardFooterButtons: {
-    flexDirection: "row",
-    marginTop: "auto",
-    justifyContent: "space-between",
-    width: "100%",
-    paddingHorizontal: 10,
-  },
-  recommenedCardFooterBtn: {
+  roi: { color: "#ffffff", fontSize: 10 },
+  productCardFooterBtn: {
     height: 35,
     paddingVertical: 10,
     borderRadius: 30,
-    width: "40%",
+    width: Width * 0.55,
   },
 });

@@ -56,7 +56,7 @@ export const Plans = [
       },
       {
         month: "12nd",
-        amount: 2500,
+        amount: 50000,
       },
     ],
   },

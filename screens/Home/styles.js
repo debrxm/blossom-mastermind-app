@@ -105,6 +105,7 @@ export const styles = StyleSheet.create({
   contentContainer: {
     padding: 10,
     paddingLeft: 2,
+    width: (Width / 1.455) * 3,
   },
   investments: {
     marginHorizontal: 10,

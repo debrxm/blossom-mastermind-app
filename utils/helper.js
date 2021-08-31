@@ -5,7 +5,18 @@ import * as Notifications from "expo-notifications";
 export const GenerateRandomNDigits = (n) => {
   return Math.floor(Math.random() * (9 * Math.pow(10, n))) + Math.pow(10, n);
 };
-
+export const MoneyFormat = (labelValue) => {
+  // Nine Zeroes for Billions
+  return Math.abs(Number(labelValue)) >= 1.0e9
+    ? Math.abs(Number(labelValue)) / 1.0e9 + "B"
+    : // Six Zeroes for Millions
+    Math.abs(Number(labelValue)) >= 1.0e6
+    ? Math.abs(Number(labelValue)) / 1.0e6 + "M"
+    : // Three Zeroes for Thousands
+    Math.abs(Number(labelValue)) >= 1.0e3
+    ? Math.abs(Number(labelValue)) / 1.0e3 + "K"
+    : Math.abs(Number(labelValue));
+};
 const date = new Date(),
   year = date.getFullYear(),
   month = date.getMonth();

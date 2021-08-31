@@ -10,7 +10,9 @@ import {
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import AppButton from "../../components/AppButton/AppButton";
+import RecommendedInvestmentPreview from "../../components/RecommendedInvestmentPreview/RecommendedInvestmentPreview";
 import { COLORS } from "../../constants/Colors";
+import { Plans } from "../../constants/Packages";
 import { auth } from "../../firebase/config";
 
 import { styles } from "./styles";
@@ -224,7 +226,11 @@ const Home = () => {
                   horizontal
                   showsHorizontalScrollIndicator={false}
                   contentContainerStyle={styles.contentContainer}
-                ></ScrollView>
+                >
+                  {Plans.map((item, index) => (
+                    <RecommendedInvestmentPreview key={index} data={item} />
+                  ))}
+                </ScrollView>
               </View>
             </View>
           </View>

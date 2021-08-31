@@ -3,57 +3,49 @@ import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { View, Image, Text } from "react-native";
 import { COLORS } from "../../constants/Colors";
+import { MoneyFormat } from "../../utils/helper";
 import AppButton from "../AppButton/AppButton";
+
 import { styles } from "./styles";
 
-export default function RecommendedInvestmentPreview({ customStyles }) {
+export default function RecommendedInvestmentPreview({ customStyles, data }) {
   const navigation = useNavigation();
   const onPress = () => {
-    navigation.navigate("ProductView");
+    navigation.navigate("PackageView", { data });
   };
   return (
     <>
       <View style={[styles.recommenedCard, { ...customStyles }]}>
-        <View style={styles.plan}>
-          <Text style={styles.planText}>1</Text>
-        </View>
-        <View style={styles.recommenedCardImageContainer}>
+        <View style={styles.pattern}>
           <Image
             style={styles.recommenedCardImage}
-            source={require("../../assets/logos/bb.png")}
+            source={require("../../assets/images/vector.png")}
+            resizeMode="stretch"
           />
         </View>
         <View style={styles.cardInfo}>
-          <Text style={styles.cardInfoName}>Boundless Diamond Executive</Text>
-          {/* <Text style={styles.cardInfoLightText}>Boundless Diamond Executive</Text> */}
-        </View>
-        <View style={styles.recommenedCardFooter}>
-          <View style={styles.recommenedCardFooterButtons}>
-            <AppButton
-              onPress={onPress}
-              title="Invest Now"
-              customStyle={{
-                ...styles.recommenedCardFooterBtn,
-                backgroundColor: "#ffffff",
-              }}
-              textStyle={{
-                textTransform: "capitalize",
-                fontWeight: "400",
-                fontSize: 12,
-                color: COLORS.tint,
-              }}
-            />
-            <AppButton
-              onPress={onPress}
-              title="View Details"
-              customStyle={styles.recommenedCardFooterBtn}
-              textStyle={{
-                textTransform: "capitalize",
-                fontWeight: "400",
-                fontSize: 12,
-              }}
-            />
+          <Text style={styles.name}>{data.name}</Text>
+          <View style={{ height: 5 }}></View>
+          <Text style={styles.duration}>{data.duration}</Text>
+          <View style={{ height: 5 }}></View>
+          <Text style={styles.cost}>₦{MoneyFormat(data.cost)}</Text>
+          <View style={{ height: 15 }}></View>
+          <View style={styles.roiContainer}>
+            <Text style={styles.roi}>ROI: {data.roi}%</Text>
           </View>
+        </View>
+        <View style={{ height: 15 }}></View>
+        <View style={styles.productCardFooterButtons}>
+          <AppButton
+            onPress={onPress}
+            title="View Details"
+            customStyle={styles.productCardFooterBtn}
+            textStyle={{
+              textTransform: "capitalize",
+              fontWeight: "400",
+              fontSize: 12,
+            }}
+          />
         </View>
       </View>
     </>

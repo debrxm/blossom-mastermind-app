@@ -26,10 +26,10 @@ const PaymentBreakdownTable = ({ data }) => {
           contentContainerStyle={{}}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
-          keyExtractor={({ code }) => code}
+          keyExtractor={(item, index) => index.toString()}
           data={data.returns}
           renderItem={({ item, index }) => (
-            <View key={item.code} style={[styles.tableRow]}>
+            <View style={[styles.tableRow]}>
               <Text
                 style={[
                   styles.tableText,
