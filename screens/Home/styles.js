@@ -42,6 +42,16 @@ export const styles = StyleSheet.create({
     height: 40,
     justifyContent: "center",
     alignItems: "center",
+    position: "relative",
+  },
+  dot: {
+    backgroundColor: COLORS.danger,
+    borderRadius: 10,
+    elevation: 2,
+    width: 8,
+    height: 8,
+    position: "absolute",
+    top: 6,
   },
   wallet: {
     minHeight: 140,

@@ -183,6 +183,7 @@ const PackageView = () => {
         label={`Invest ₦${data.cost} Now`}
         handleCreateInvoice={() => handleCreateInvoice()}
         loading={payLoading}
+        investmentPackage={data}
       />
       <PaymentSuccessful
         modalVisible={modalVisible}

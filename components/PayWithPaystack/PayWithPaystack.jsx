@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import { Paystack } from "react-native-paystack-webview";
 import { View } from "react-native";
 import { paystackTestKeys } from "../../configs/apiKeys";
 import AppButton from "../AppButton/AppButton";
 import { COLORS } from "../../constants/Colors";
+import { OnPaymentSuccessful } from "../../firebase/firestore";
 
 import { styles } from "./styles";
 
@@ -13,13 +15,23 @@ const PayWithPaystack = ({
   setSuccess,
   setFailure,
   setModalVisible,
+  investmentPackage,
 }) => {
+  const user = useSelector(({ user }) => user.currentUser);
   useEffect(() => {});
-
+  const cleanUp = () => {
+    setSuccess(true);
+  };
   const paystackWebViewRef = useRef();
-  const onSuccess = async () => {
+  const onSuccess = async (data) => {
+    const trxref = data.transactionRef.trxref;
+    const trxData = {
+      trxref,
+      amount,
+    };
     setModalVisible(true);
     try {
+      OnPaymentSuccessful(user, trxData, investmentPackage, cleanUp);
     } catch (err) {
       setFailure(true);
       // "Ooops an error occured wallet no funded" + " " + err,

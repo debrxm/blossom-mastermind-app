@@ -19,8 +19,8 @@ import { styles } from "./styles";
 
 const Home = () => {
   const user = useSelector(({ user }) => user.currentUser);
+  const hasNoty = useSelector(({ user }) => user.hasNoty);
   const [hasInvestment] = useState(false);
-  const [isTipHidden, hideTip] = useState(false);
   const [hour, setHour] = useState(null);
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -85,6 +85,7 @@ const Home = () => {
               size={24}
               color={COLORS.black}
             />
+            {hasNoty && <View style={styles.dot}></View>}
           </View>
         </TouchableWithoutFeedback>
         <View

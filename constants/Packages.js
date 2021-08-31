@@ -59,6 +59,16 @@ export const Plans = [
         amount: 50000,
       },
     ],
+    freebies: [
+      {
+        name: "Coffee",
+        type: "pack",
+        fully_recived: false,
+        partial_recive: false,
+        available: true,
+      },
+    ],
+    investors: {},
   },
   {
     code: "bmi100k",
@@ -120,6 +130,16 @@ export const Plans = [
         amount: 100000,
       },
     ],
+    freebies: [
+      {
+        name: "Coffee",
+        type: "pack",
+        fully_recived: false,
+        partial_recive: false,
+        available: true,
+      },
+    ],
+    investors: {},
   },
   {
     code: "bmi200k",
@@ -181,5 +201,15 @@ export const Plans = [
         amount: 200000,
       },
     ],
+    freebies: [
+      {
+        name: "Coffee",
+        type: "pack",
+        fully_recived: false,
+        partial_recive: false,
+        available: true,
+      },
+    ],
+    investors: {},
   },
 ];
