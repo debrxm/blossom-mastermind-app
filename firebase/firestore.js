@@ -84,6 +84,12 @@ export const OnPaymentSuccessful = async (
   //   });
   // }
   batch.set(investmentRef, investmentPackage);
+  const userRef = firestore.doc(`users/${user.id}`);
+  const previousInvestment = user.total_invested + trxData.amount;
+  console.log(previousInvestment);
+  batch.update(userRef, {
+    total_invested: previousInvestment,
+  });
   // UPDATE TRANSACTION & SELF NOTIFICATION
   UpdateDatabaseNotification(user.id, {
     title: "Payment Alert!!!",

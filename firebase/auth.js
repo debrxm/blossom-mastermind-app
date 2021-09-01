@@ -15,6 +15,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       joined,
       location: "",
       gender: "",
+      total_invested: 0,
       ...additionalData,
     };
     try {

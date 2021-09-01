@@ -8,10 +8,11 @@ import { toggleHasNoty } from "../../redux/user/actions";
 import { styles } from "./styles";
 import { COLORS } from "../../constants/Colors";
 import AppButton from "../AppButton/AppButton";
+import { Height } from "../../constants/Layout";
 const NotificationViewer = ({
   notyVisible,
   setNotyVisible,
-  data: { id, title, message, created_at, viewed },
+  data: { id, title, investorMessage, created_at, viewed },
 }) => {
   const user = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ const NotificationViewer = ({
       <View
         style={{
           width: "100%",
-          height: Dimensions.get("screen").height,
+          height: Height,
           backgroundColor: COLORS.white,
           flex: 1,
         }}
@@ -72,7 +73,7 @@ const NotificationViewer = ({
               <Feather name="bell" size={24} color={COLORS.white} />
             </View>
             <Text style={styles.boldText}>{title}</Text>
-            <Text style={styles.lightText}>{message}</Text>
+            <Text style={styles.lightText}>{investorMessage}</Text>
             <Text style={styles.time}>{moment(created_at).fromNow()}</Text>
           </View>
           <View

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
+  Image,
   View,
   Text,
   TouchableOpacity,
@@ -14,11 +15,11 @@ import { firestore } from "../../firebase/config";
 import NotificationPreview from "../../components/NotificationPreview/NotificationPreview";
 import { Height, Width } from "../../constants/Layout";
 import { COLORS } from "../../constants/Colors";
-import { useSelector } from "react-redux";
-import NotificationViewer from "../../components/NotificationViewer/NotificationViewer";
 import notificationIcon from "../../assets/images/notification.png";
+import NotificationViewer from "../../components/NotificationViewer/NotificationViewer";
 
 import { styles } from "./styles";
+import { useSelector } from "react-redux";
 
 const Notification = () => {
   let onEndReachedCalledDuringMomentum = false;
@@ -166,12 +167,19 @@ const Notification = () => {
           </View>
         </SafeAreaView>
       ) : (
-        <NotificationViewer
-          notyVisible={notyVisible}
-          setNotyVisible={setNotyVisible}
-          data={notificationDate}
+        <NoMessage
+          item={{
+            image: notificationIcon,
+            title: "You currently do not have notification",
+            subtitle: `You will see notifications about your investment appear here `,
+          }}
         />
       )}
+      <NotificationViewer
+        notyVisible={notyVisible}
+        setNotyVisible={setNotyVisible}
+        data={notificationDate}
+      />
     </>
   );
 };
@@ -190,13 +198,6 @@ function RenderFooter({ isMoreLoading }) {
 
 export default Notification;
 
-<NoMessage
-  item={{
-    image: notificationIcon,
-    title: "You currently do not have notification",
-    subtitle: `You will see notifications about your investment appear here `,
-  }}
-/>;
 const NoMessage = ({ item }) => {
   return (
     <View

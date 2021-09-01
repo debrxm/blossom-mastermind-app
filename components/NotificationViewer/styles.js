@@ -3,7 +3,6 @@ import { COLORS } from "../../constants/Colors";
 
 export const styles = StyleSheet.create({
   container: {
-    // flexDirection: "row",
     paddingTop: 100,
     width: "100%",
     flex: 1,
@@ -16,7 +15,7 @@ export const styles = StyleSheet.create({
     elevation: 3,
   },
   icon: {
-    backgroundColor: COLORS.black,
+    backgroundColor: COLORS.tint,
     height: 50,
     width: 50,
     borderRadius: 30,
@@ -30,9 +29,10 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   lightText: {
-    fontSize: 14,
+    fontSize: 20,
     color: COLORS.black,
     marginVertical: 5,
+    textAlign: "center",
   },
   time: {
     marginTop: "auto",
@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
     color: COLORS.black,
   },
   okBtn: {
-    backgroundColor: COLORS.black,
+    backgroundColor: COLORS.tint,
     borderRadius: 30,
     height: 40,
     width: "94%",

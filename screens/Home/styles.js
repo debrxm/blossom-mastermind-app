@@ -1,11 +1,17 @@
 import { Dimensions, StyleSheet } from "react-native";
 import { COLORS } from "../../constants/Colors";
-import { Width } from "../../constants/Layout";
+import { Height, Width } from "../../constants/Layout";
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#ffffff",
+  },
+  // containerContentContainer: {},
+  contentWrapper: {
+    backgroundColor: "#ffffff",
+    flex: 1,
+    height: Height - Height * 0.25,
+    paddingBottom: Height * 0.1,
   },
   header: {
     flexDirection: "row",
@@ -15,7 +21,7 @@ export const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingHorizontal: 10,
     zIndex: 1,
-    minHeight: 80,
+    height: Height * 0.17,
     backgroundColor: "#ffffff",
     justifyContent: "space-between",
   },
@@ -54,7 +60,7 @@ export const styles = StyleSheet.create({
     top: 6,
   },
   wallet: {
-    minHeight: 140,
+    height: Height * 0.2,
     backgroundColor: COLORS.tint,
     margin: 10,
     marginTop: 20,
@@ -62,7 +68,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 10,
-    paddingTop: 15,
+    paddingTop: 20,
   },
   walletMainTextsContainer: {
     alignItems: "center",
@@ -71,7 +77,7 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     color: COLORS.cloudyWhite,
     textTransform: "uppercase",
-    marginBottom: 5,
+    marginBottom: 10,
   },
   walletMainTextBold: {
     color: COLORS.white,
@@ -86,7 +92,7 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
   },
   walletBtn: {
-    height: 35,
+    height: Height * 0.2 * 0.23,
     paddingVertical: 10,
     borderRadius: 30,
     width: "90%",
@@ -116,6 +122,7 @@ export const styles = StyleSheet.create({
     padding: 10,
     paddingLeft: 2,
     width: (Width / 1.455) * 3,
+    // height: Height - Height * 0,
   },
   investments: {
     marginHorizontal: 10,

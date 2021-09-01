@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     paddingHorizontal: 10,
-    backgroundColor: COLORS.black,
+    backgroundColor: COLORS.tint,
     elevation: 3,
   },
   boldText: {
@@ -19,8 +19,8 @@ export const styles = StyleSheet.create({
     color: "#ffffff",
   },
   lightText: {
-    fontSize: 10,
-    color: COLORS.white,
+    fontSize: 14,
+    // color: COLORS.white,
     marginVertical: 5,
   },
   time: {

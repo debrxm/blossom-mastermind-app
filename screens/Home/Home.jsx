@@ -95,183 +95,200 @@ const Home = () => {
           }}
         ></View>
       </View>
-      <View style={styles.container}>
-        <View style={styles.wallet}>
-          <View style={styles.walletMainTextsContainer}>
-            <Text style={styles.walletMainTextLight}>Total Invested</Text>
-            <Text style={styles.walletMainTextBold}>{`₦ ${"00.00"}`}</Text>
-          </View>
-          <View style={styles.walletButtons}>
-            <AppButton
-              onPress={() => navigation.navigate("Investments")}
-              title="View Investments"
-              customStyle={{ ...styles.walletBtn, backgroundColor: "#ffffff" }}
-              textStyle={{
-                textTransform: "capitalize",
-                fontWeight: "400",
-                fontSize: 12,
-                color: COLORS.tint,
-              }}
-            />
-          </View>
-        </View>
-        {hasInvestment ? (
-          <>
-            <View style={[styles.sectionContainer, styles.investments]}>
-              <View
-                style={[
-                  styles.sectionContainerHead,
-                  {
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    styles.sectionContainerTitle,
-                    styles.recommendedTitleText,
-                  ]}
-                >
-                  Activity
-                </Text>
-                <TouchableWithoutFeedback
-                  onPress={() => navigation.navigate("Packages")}
-                >
-                  <Text
-                    style={[
-                      styles.sectionContainerTitle,
-                      styles.recommendedTitleText,
-                      { color: COLORS.tint, fontSize: 12 },
-                    ]}
-                  >
-                    See all
-                  </Text>
-                </TouchableWithoutFeedback>
-              </View>
-            </View>
-
-            <View style={[styles.sectionContainer, styles.investments]}>
-              <View
-                style={[
-                  styles.sectionContainerHead,
-                  {
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    styles.sectionContainerTitle,
-                    styles.recommendedTitleText,
-                  ]}
-                >
-                  Transactions
-                </Text>
-                <TouchableWithoutFeedback
-                  onPress={() => navigation.navigate("Transactions")}
-                >
-                  <Text
-                    style={[
-                      styles.sectionContainerTitle,
-                      styles.recommendedTitleText,
-                      { color: COLORS.tint, fontSize: 12 },
-                    ]}
-                  >
-                    See all
-                  </Text>
-                </TouchableWithoutFeedback>
-              </View>
-            </View>
-          </>
-        ) : (
-          <View style={styles.noInvestment}>
-            <View style={[styles.sectionContainer, styles.recommended]}>
-              <View
-                style={[
-                  styles.sectionContainerHead,
-                  {
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    styles.sectionContainerTitle,
-                    styles.recommendedTitleText,
-                  ]}
-                >
-                  Recommended
-                </Text>
-                <TouchableWithoutFeedback
-                  onPress={() => navigation.navigate("Packages")}
-                >
-                  <Text
-                    style={[
-                      styles.sectionContainerTitle,
-                      styles.recommendedTitleText,
-                      { color: COLORS.tint, fontSize: 12 },
-                    ]}
-                  >
-                    See all
-                  </Text>
-                </TouchableWithoutFeedback>
-              </View>
-              <View style={styles.recommendations}>
-                <ScrollView
+      {/* <ScrollView
                   horizontal
                   showsHorizontalScrollIndicator={false}
                   contentContainerStyle={styles.contentContainer}
-                >
-                  {Plans.map((item, index) => (
-                    <RecommendedInvestmentPreview key={index} data={item} />
-                  ))}
-                </ScrollView>
-              </View>
+                ></ScrollView> */}
+      <View style={styles.contentWrapper}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.containerContentContainer}
+          style={styles.container}
+        >
+          <View style={styles.wallet}>
+            <View style={styles.walletMainTextsContainer}>
+              <Text style={styles.walletMainTextLight}>Total Invested</Text>
+              <Text style={styles.walletMainTextBold}>{`₦ ${
+                user.total_invested === 0 ? "00.00" : user.total_invested
+              }`}</Text>
+            </View>
+            <View style={styles.walletButtons}>
+              <AppButton
+                onPress={() => navigation.navigate("Investments")}
+                title="View Investments"
+                customStyle={{
+                  ...styles.walletBtn,
+                  backgroundColor: "#ffffff",
+                }}
+                textStyle={{
+                  textTransform: "capitalize",
+                  fontWeight: "400",
+                  fontSize: 12,
+                  color: COLORS.tint,
+                }}
+              />
             </View>
           </View>
-        )}
-        {!user.emailVerified && (
-          <View style={[styles.sectionContainer, styles.tips]}>
-            <View style={styles.tipContainer}>
-              <View style={styles.tipImageContainer}>
-                <AntDesign
-                  name="warning"
-                  size={24}
-                  color={COLORS.cloudyWhite}
-                />
-              </View>
-              <View style={styles.tipTexts}>
-                <Text style={styles.tipTextBold}>
-                  {/* A verification link has been send to this email  */}
-                  {user.email}
-                </Text>
-                <Text style={styles.tipTextLight}>
-                  Please verify you email to avoid any interruption
-                </Text>
-              </View>
-              <TouchableWithoutFeedback onPress={resendVerificationLink}>
+
+          {hasInvestment ? (
+            <>
+              <View style={[styles.sectionContainer, styles.investments]}>
                 <View
                   style={[
-                    styles.tipImageContainer,
-                    { backgroundColor: COLORS.success },
+                    styles.sectionContainerHead,
+                    {
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    },
                   ]}
                 >
+                  <Text
+                    style={[
+                      styles.sectionContainerTitle,
+                      styles.recommendedTitleText,
+                    ]}
+                  >
+                    Activity
+                  </Text>
+                  <TouchableWithoutFeedback
+                    onPress={() => navigation.navigate("Packages")}
+                  >
+                    <Text
+                      style={[
+                        styles.sectionContainerTitle,
+                        styles.recommendedTitleText,
+                        { color: COLORS.tint, fontSize: 12 },
+                      ]}
+                    >
+                      See all
+                    </Text>
+                  </TouchableWithoutFeedback>
+                </View>
+              </View>
+
+              <View style={[styles.sectionContainer, styles.investments]}>
+                <View
+                  style={[
+                    styles.sectionContainerHead,
+                    {
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    },
+                  ]}
+                >
+                  <Text
+                    style={[
+                      styles.sectionContainerTitle,
+                      styles.recommendedTitleText,
+                    ]}
+                  >
+                    Transactions
+                  </Text>
+                  <TouchableWithoutFeedback
+                    onPress={() => navigation.navigate("Transactions")}
+                  >
+                    <Text
+                      style={[
+                        styles.sectionContainerTitle,
+                        styles.recommendedTitleText,
+                        { color: COLORS.tint, fontSize: 12 },
+                      ]}
+                    >
+                      See all
+                    </Text>
+                  </TouchableWithoutFeedback>
+                </View>
+              </View>
+            </>
+          ) : (
+            <View style={styles.noInvestment}>
+              <View style={[styles.sectionContainer, styles.recommended]}>
+                <View
+                  style={[
+                    styles.sectionContainerHead,
+                    {
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    },
+                  ]}
+                >
+                  <Text
+                    style={[
+                      styles.sectionContainerTitle,
+                      styles.recommendedTitleText,
+                    ]}
+                  >
+                    Recommended
+                  </Text>
+                  <TouchableWithoutFeedback
+                    onPress={() => navigation.navigate("Packages")}
+                  >
+                    <Text
+                      style={[
+                        styles.sectionContainerTitle,
+                        styles.recommendedTitleText,
+                        { color: COLORS.tint, fontSize: 12 },
+                      ]}
+                    >
+                      See all
+                    </Text>
+                  </TouchableWithoutFeedback>
+                </View>
+                <View style={styles.recommendations}>
+                  <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={styles.contentContainer}
+                  >
+                    {Plans.map((item, index) => (
+                      <RecommendedInvestmentPreview key={index} data={item} />
+                    ))}
+                  </ScrollView>
+                </View>
+              </View>
+            </View>
+          )}
+          {!user.emailVerified && (
+            <View style={[styles.sectionContainer, styles.tips]}>
+              <View style={styles.tipContainer}>
+                <View style={styles.tipImageContainer}>
                   <AntDesign
-                    name="reload1"
+                    name="warning"
                     size={24}
                     color={COLORS.cloudyWhite}
                   />
                 </View>
-              </TouchableWithoutFeedback>
+                <View style={styles.tipTexts}>
+                  <Text style={styles.tipTextBold}>
+                    {/* A verification link has been send to this email  */}
+                    {user.email}
+                  </Text>
+                  <Text style={styles.tipTextLight}>
+                    Please verify you email to avoid any interruption
+                  </Text>
+                </View>
+                <TouchableWithoutFeedback onPress={resendVerificationLink}>
+                  <View
+                    style={[
+                      styles.tipImageContainer,
+                      { backgroundColor: COLORS.success },
+                    ]}
+                  >
+                    <AntDesign
+                      name="reload1"
+                      size={24}
+                      color={COLORS.cloudyWhite}
+                    />
+                  </View>
+                </TouchableWithoutFeedback>
+              </View>
             </View>
-          </View>
-        )}
+          )}
+        </ScrollView>
       </View>
     </>
   );

@@ -67,8 +67,7 @@ const Packages = () => {
           <FlatList
             keyboardShouldPersistTaps="always"
             contentContainerStyle={{
-              flex: 1,
-              paddingHorizontal: 5,
+              alignItems: "center",
             }}
             showsVerticalScrollIndicator={false}
             keyExtractor={(item, index) => index.toString()}

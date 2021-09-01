@@ -1,16 +1,17 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { Height, Width } from "../../constants/Layout";
 const { width, height } = Dimensions.get("screen");
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
   },
-
   listContainer: {
-    width: "100%",
-    marginHorizontal: 10,
-    marginTop: 10,
-    marginBottom: 100,
+    backgroundColor: "#ffffff",
+    flex: 1,
+    height: Height - Height * 0.25,
+    paddingBottom: Height * 0.1,
+    width: Width,
   },
   header: {
     flexDirection: "row",
@@ -20,7 +21,6 @@ export const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingLeft: 20,
     paddingRight: 10,
-    minHeight: 80,
     backgroundColor: "#ffffff",
     justifyContent: "space-between",
   },

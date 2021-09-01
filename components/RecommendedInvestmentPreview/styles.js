@@ -1,10 +1,12 @@
 import { StyleSheet } from "react-native";
 import { COLORS } from "../../constants/Colors";
-import { Width } from "../../constants/Layout";
+import { Height, Width } from "../../constants/Layout";
+const boxHeight = Height * 0.35;
+const boxWidth = Width / 1.5;
 export const styles = StyleSheet.create({
   recommenedCard: {
-    width: Width / 1.5,
-    height: 260,
+    width: boxWidth,
+    height: boxHeight,
     position: "relative",
     marginRight: 8,
     backgroundColor: "#ffffff",
@@ -54,7 +56,7 @@ export const styles = StyleSheet.create({
   },
   roi: { color: "#ffffff", fontSize: 10 },
   productCardFooterBtn: {
-    height: 35,
+    height: boxHeight * 0.14,
     paddingVertical: 10,
     borderRadius: 30,
     width: Width * 0.55,

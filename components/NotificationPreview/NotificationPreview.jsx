@@ -8,7 +8,7 @@ export default function NotificationPreview({
   data,
   setNotificationDate,
   setNotyVisible,
-  data: { title, message, created_at, viewed },
+  data: { title, investorMessage, created_at, viewed },
 }) {
   return (
     <>
@@ -27,14 +27,14 @@ export default function NotificationPreview({
         <View
           style={{
             ...styles.container,
-            backgroundColor: viewed ? "#ffffff" : COLORS.black,
+            backgroundColor: viewed ? "#ffffff" : COLORS.tint,
           }}
         >
           <View style={{ flex: 1 }}>
             <Text
               style={{
                 ...styles.boldText,
-                color: viewed ? COLORS.black : "#ffffff",
+                color: viewed ? COLORS.tint : "#ffffff",
               }}
             >
               {title}
@@ -42,10 +42,12 @@ export default function NotificationPreview({
             <Text
               style={{
                 ...styles.lightText,
-                color: viewed ? COLORS.textColor : COLORS.white,
+                color: viewed ? COLORS.tint : COLORS.white,
               }}
+              numberOfLines={1}
+              ellipsizeMode="tail"
             >
-              {message}
+              {investorMessage}
             </Text>
             <Text
               style={{

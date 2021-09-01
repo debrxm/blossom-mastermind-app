@@ -1,9 +1,12 @@
 import { StyleSheet } from "react-native";
 import { COLORS } from "../../constants/Colors";
+import { Height, Width } from "../../constants/Layout";
+const boxHeight = Height * 0.27;
+const boxWidth = Width * 0.9;
 export const styles = StyleSheet.create({
   productCard: {
-    width: "95%",
-    height: 200,
+    width: boxWidth,
+    height: boxHeight,
     position: "relative",
     marginTop: 10,
     marginBottom: 10,
@@ -27,12 +30,12 @@ export const styles = StyleSheet.create({
   planText: { color: "#ffffff", fontSize: 10 },
   productCardImageContainer: {
     borderRadius: 10,
-    height: 50,
-    width: 50,
+    height: boxHeight * 0.3,
+    width: boxWidth * 0.3,
   },
   productCardImage: {
-    height: 50,
-    width: 50,
+    height: boxHeight * 0.3,
+    width: boxWidth * 0.3,
     borderRadius: 12,
     resizeMode: "contain",
   },
@@ -85,7 +88,7 @@ export const styles = StyleSheet.create({
     width: "100%",
   },
   productCardFooterBtn: {
-    height: 35,
+    height: boxHeight * 0.16,
     paddingVertical: 10,
     borderRadius: 30,
     width: "90%",
