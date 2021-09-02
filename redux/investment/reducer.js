@@ -1,42 +1,34 @@
+import { ActionTypes } from "./types";
 const INITIAL_STATE = {
-    investments: [],
-    wallet: null,
-    receipts: [],
-    earnings: []
-}
-
-
+  investments: [],
+  activeInvestments: [],
+  elapsedInvestments: [],
+  pendingInvestments: { status: false, count: 0 },
+};
 
 export default function (state = INITIAL_STATE, action) {
-    switch (action.type) {
-        case "SAVE_INVESTMENTS":
-            return {
-                ...state,
-                investments: action.payload
-            }
-
-        case "CLEAR-INVESTMENT":
-            return {
-                ...state,
-                investments: []
-            };
-        case "SAVE_WALLET":
-            return {
-                ...state,
-                wallet: action.payload
-            };
-        case "SAVE_INVESTMENT_RECEIPTS":
-            return {
-                ...state,
-                receipts: action.payload
-            }
-        case "SAVE_INVESTMENT_EARNINGS":
-            return {
-                ...state,
-                earnings: action.payload
-            }
-
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case ActionTypes.SET_INVESTMENTS:
+      return {
+        ...state,
+        investments: action.payload,
+      };
+    case ActionTypes.SET_ACTIVE_INVESTMENTS:
+      return {
+        ...state,
+        activeInvestments: action.payload,
+      };
+    case ActionTypes.SET_ELAPSED_INVESTMENTS:
+      return {
+        ...state,
+        elapsedInvestments: action.payload,
+      };
+    case ActionTypes.SET_PENDING_INVESTMENT:
+      return {
+        ...state,
+        pendingInvestments: action.payload,
+      };
+    default:
+      return state;
+  }
 }

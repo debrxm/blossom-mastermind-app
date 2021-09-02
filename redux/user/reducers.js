@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   currentUser: null,
 };
 
-const userReducer = (state = INITIAL_STATE, action) => {
+export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case ActionTypes.TOGGLE_HAS_NOTY:
       return {
@@ -20,6 +20,4 @@ const userReducer = (state = INITIAL_STATE, action) => {
     default:
       return state;
   }
-};
-
-export default userReducer;
+}

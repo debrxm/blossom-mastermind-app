@@ -1,5 +1,5 @@
-import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import React from "react";
 import { View, Image, Text } from "react-native";
 import { COLORS } from "../../constants/Colors";
@@ -34,12 +34,18 @@ export default function ProductPreview({ data, customStyles }) {
             <Text style={styles.cardInfoName}>{data.name}</Text>
             <View style={styles.cardInfoDuration}>
               <Text
-                style={[styles.cardInfoDurationLightText, { marginBottom: 6 }]}
+                style={[
+                  styles.cardInfoDurationLightText,
+                  { marginBottom: responsiveFontSize(0.8) },
+                ]}
               >
                 Duration
               </Text>
               <Text
-                style={[styles.cardInfoDurationBoldText, { marginBottom: 6 }]}
+                style={[
+                  styles.cardInfoDurationBoldText,
+                  { marginBottom: responsiveFontSize(0.8) },
+                ]}
               >
                 {data.duration}
               </Text>
@@ -63,7 +69,7 @@ export default function ProductPreview({ data, customStyles }) {
               textStyle={{
                 textTransform: "capitalize",
                 fontWeight: "400",
-                fontSize: 12,
+                fontSize: responsiveFontSize(1.5),
               }}
             />
           </View>

@@ -14,7 +14,7 @@ const INITIAL_STATE = {
   bank_branch: "",
 };
 
-const SetupFormReducer = (state = INITIAL_STATE, action) => {
+export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case ActionTypes.AGE:
       return {
@@ -74,6 +74,4 @@ const SetupFormReducer = (state = INITIAL_STATE, action) => {
     default:
       return state;
   }
-};
-
-export default SetupFormReducer;
+}

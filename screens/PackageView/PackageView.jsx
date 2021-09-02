@@ -11,6 +11,7 @@ import {
 import { styles } from "./styles";
 import { COLORS } from "../../constants/Colors";
 import { useNavigation, useRoute } from "@react-navigation/core";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import PayWithPaystack from "../../components/PayWithPaystack/PayWithPaystack";
 import { useSelector } from "react-redux";
 import HelperDialog from "../../components/HelperDialog/HelperDialog";
@@ -74,7 +75,7 @@ const PackageView = () => {
         </View>
         <View
           style={{
-            height: 60,
+            // height: 60,
             backgroundColor: "transparent",
             width: Width - 50,
             flexDirection: "row",
@@ -165,7 +166,7 @@ const PackageView = () => {
           </TouchableWithoutFeedback>
           <Text
             style={{
-              fontSize: 10,
+              fontSize: responsiveFontSize(1.3),
               textAlign: "center",
               color: COLORS.lightTextColor,
               marginTop: -15,

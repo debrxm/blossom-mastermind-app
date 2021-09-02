@@ -73,7 +73,7 @@ export const OnPaymentSuccessful = async (
     .collection("investments")
     .doc(user.id)
     .collection("investments")
-    .doc();
+    .doc(`${trxData.trxref}`);
   const hasInvestedBefore = investmentPackage.investors[user.id] === true;
   // if (!hasInvestedBefore) {
   //   const oldInvestors = investmentPackage.investors
@@ -83,7 +83,7 @@ export const OnPaymentSuccessful = async (
   //     no_of_investors: packageRef.no_of_investors + 1,
   //   });
   // }
-  batch.set(investmentRef, investmentPackage);
+  batch.set(investmentRef, { ...investmentPackage, confirmed: false });
   const userRef = firestore.doc(`users/${user.id}`);
   const previousInvestment = user.total_invested + trxData.amount;
   console.log(previousInvestment);

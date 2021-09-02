@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import { COLORS } from "../../constants/Colors";
 import { Height, Width } from "../../constants/Layout";
 
@@ -23,7 +24,7 @@ export const styles = StyleSheet.create({
   },
   routeTitle: {
     color: COLORS.cloudyWhite,
-    fontSize: 16,
+    fontSize: responsiveFontSize(2),
     letterSpacing: 1,
   },
   name_roi: {
@@ -32,23 +33,23 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-evenly",
     backgroundColor: COLORS.tint,
-    paddingBottom: 50,
+    paddingBottom: Height * 0.06,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
   },
   productName: {
     color: COLORS.cloudyWhite,
-    fontSize: 30,
-    paddingVertical: 20,
+    fontSize: responsiveFontSize(3),
+    paddingVertical: Height * 0.02,
   },
   productRoi: {
     color: COLORS.cloudyWhite,
-    fontSize: 14,
-    paddingVertical: 20,
+    fontSize: responsiveFontSize(1.6),
+    // paddingVertical: 20,
   },
   planBox: {
     width: Width / 4,
-    height: Height / 10,
+    height: Height * 0.09,
     backgroundColor: COLORS.white,
     borderRadius: 10,
     padding: 5,
@@ -59,11 +60,11 @@ export const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   planBoxBoldText: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(1.5),
     textTransform: "uppercase",
   },
   planBoxLightText: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(2),
   },
   breakdown: {
     marginTop: 30,
@@ -71,30 +72,12 @@ export const styles = StyleSheet.create({
   breakdownTitle: {
     color: COLORS.lightTextColor,
     marginTop: 10,
-    fontSize: 13,
+    fontSize: responsiveFontSize(1.5),
     letterSpacing: 2,
     fontWeight: "600",
     textAlign: "center",
   },
-  breakdownBox: {
-    width: Width / 5,
-    height: Height / 10,
-    backgroundColor: COLORS.white,
-    borderRadius: 10,
-    padding: 5,
-    elevation: 5,
-    shadowRadius: 1,
-    shadowOpacity: 0.5,
-    alignItems: "center",
-    justifyContent: "space-evenly",
-  },
-  breakdownBoxBoldText: {
-    fontSize: 12,
-    textTransform: "uppercase",
-  },
-  breakdownBoxLightText: {
-    fontSize: 16,
-  },
+
   tableHeadText: {
     fontSize: 16,
   },
@@ -107,7 +90,7 @@ export const styles = StyleSheet.create({
   tableText: {
     textTransform: "capitalize",
     fontWeight: "400",
-    fontSize: 12,
+    fontSize: responsiveFontSize(1.3),
     color: COLORS.black,
     width: (Width - 20) / 3,
     textAlign: "right",
@@ -116,9 +99,8 @@ export const styles = StyleSheet.create({
     textAlign: "left",
     width: (Width - 20) / 2,
   },
-  tableBodyText: {},
   tableFooter: {
-    marginTop: 30,
+    marginTop: responsiveFontSize(2.8),
   },
   tableSubFooter: {
     marginTop: 0,
@@ -129,7 +111,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     // bottom: 60,
     right: 0,
-    top: -8,
+    top: -18,
   },
   productCardImage: {
     height: 70,
@@ -161,26 +143,5 @@ export const styles = StyleSheet.create({
   modalText: {
     color: "#111111",
     fontSize: 14,
-  },
-  btn: {
-    height: 30,
-    paddingHorizontal: 20,
-    marginHorizontal: 5,
-  },
-  investAmount: {
-    textAlign: "center",
-    paddingVertical: 30,
-  },
-  payMethodBtn: {
-    height: 40,
-    paddingVertical: 10,
-    borderRadius: 30,
-    marginVertical: 5,
-  },
-  investNowBtn: {
-    marginTop: "auto",
-    width: "70%",
-    marginBottom: 80,
-    borderRadius: 30,
   },
 });

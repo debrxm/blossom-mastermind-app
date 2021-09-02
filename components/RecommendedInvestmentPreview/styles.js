@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import { COLORS } from "../../constants/Colors";
 import { Height, Width } from "../../constants/Layout";
 const boxHeight = Height * 0.35;
@@ -29,11 +30,11 @@ export const styles = StyleSheet.create({
 
   name: {
     textAlign: "center",
-    fontSize: 25,
+    fontSize: responsiveFontSize(3),
   },
   duration: {
     textAlign: "center",
-    fontSize: 15,
+    fontSize: responsiveFontSize(1.9),
     color: COLORS.lightTextColor,
   },
   cardInfo: {
@@ -41,7 +42,7 @@ export const styles = StyleSheet.create({
   },
   cost: {
     textAlign: "center",
-    fontSize: 25,
+    fontSize: responsiveFontSize(3.5),
     color: COLORS.tint,
   },
   roiContainer: {
@@ -54,7 +55,7 @@ export const styles = StyleSheet.create({
     borderRadius: 25,
     elevation: 3,
   },
-  roi: { color: "#ffffff", fontSize: 10 },
+  roi: { color: "#ffffff", fontSize: responsiveFontSize(1.3) },
   productCardFooterBtn: {
     height: boxHeight * 0.14,
     paddingVertical: 10,

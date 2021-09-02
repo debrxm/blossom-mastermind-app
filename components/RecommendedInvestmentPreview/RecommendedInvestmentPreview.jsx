@@ -1,5 +1,6 @@
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import React from "react";
 import { View, Image, Text } from "react-native";
 import { COLORS } from "../../constants/Colors";
@@ -43,7 +44,7 @@ export default function RecommendedInvestmentPreview({ customStyles, data }) {
             textStyle={{
               textTransform: "capitalize",
               fontWeight: "400",
-              fontSize: 12,
+              fontSize: responsiveFontSize(1.5),
             }}
           />
         </View>

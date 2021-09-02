@@ -1,4 +1,4 @@
-import { Feather, Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import React, { useEffect, useState } from "react";
 import {
@@ -10,12 +10,20 @@ import {
   ScrollView,
   FlatList,
 } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import ActiveInvestment from "../../components/ActiveInvestment/ActiveInvestment";
 import AppButton from "../../components/AppButton/AppButton";
 import ElapsedInvestment from "../../components/ElapsedInvestment/ElapsedInvestment";
 import { COLORS } from "../../constants/Colors";
 // import { COLORS } from "../../constants/Colors";
 import { Width } from "../../constants/Layout";
+import { firestore } from "../../firebase/config";
+import {
+  setActiveInvestment,
+  setElapsedInvestment,
+  setPendingInvestment,
+} from "../../redux/investment/actions";
 const { width, height } = Dimensions.get("window");
 // const COLORS = { primary: "#ffffff", white: "#010101" };
 
@@ -39,9 +47,14 @@ const Slide = ({ item }) => {
   );
 };
 const Investment = () => {
+  const user = useSelector(({ user }) => user.currentUser);
+  const pending = useSelector(
+    ({ investments }) => investments.pendingInvestments
+  );
   const navigation = useNavigation();
-  const [hasInvestment] = useState(false);
+  const dispatch = useDispatch();
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const ref = React.useRef();
   const updateCurrentSlideIndex = (e) => {
     const contentOffsetX = e.nativeEvent.contentOffset.x;
@@ -64,7 +77,43 @@ const Investment = () => {
       setCurrentSlideIndex(currentSlideIndex + 1);
     }
   };
-  useEffect(() => {}, []);
+
+  const investmentRef = firestore
+    .collection("investments")
+    .doc(user.id)
+    .collection("investments");
+
+  const OnLoadInvestments = () => {
+    setIsLoading(true);
+    investmentRef.onSnapshot((snapShot) => {
+      if (!snapShot.empty) {
+        const activeInvestment = [];
+        const elapsedInvestment = [];
+        const pending = { status: false, count: 0 };
+        snapShot.docs.forEach((item, index) => {
+          // console.log(item);
+          if (!item.data().confimed) {
+            pending.status = true;
+            pending.count++;
+          }
+          if (item.data().elapsed_date * 1 > Date.now()) {
+            activeInvestment.push(item.data);
+          } else {
+            elapsedInvestment.push(item.data);
+          }
+          if (index === snapShot.size - 1) {
+            dispatch(setPendingInvestment(pending));
+            dispatch(setActiveInvestment(activeInvestment));
+            dispatch(setElapsedInvestment(elapsedInvestment));
+          }
+        });
+      }
+    });
+    setIsLoading(false);
+  };
+  useEffect(() => {
+    OnLoadInvestments();
+  }, []);
   return (
     <>
       <View style={styles.header}>
@@ -132,6 +181,29 @@ const Investment = () => {
           renderItem={({ item }) => <Slide item={item} />}
         />
       </ScrollView>
+      <View style={{ ...styles.buttonContainer }}>
+        {pending.status && (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Pending");
+            }}
+          >
+            <View style={styles.button}>
+              <Text
+                style={{
+                  color: COLORS.cloudyWhite,
+                  position: "absolute",
+                  top: 1,
+                  fontSize: responsiveFontSize(2),
+                }}
+              >
+                {pending.count}
+              </Text>
+              <MaterialIcons name="pending-actions" size={20} color="white" />
+            </View>
+          </TouchableOpacity>
+        )}
+      </View>
     </>
   );
 };

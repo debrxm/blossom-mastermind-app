@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
 import { COLORS } from "../../constants/Colors";
 import AppButton from "../AppButton/AppButton";
 import { useNavigation } from "@react-navigation/native";
 
 import { styles } from "./styles";
+import { useSelector } from "react-redux";
 
 const ActiveInvestment = () => {
+  const user = useSelector(({ user }) => user.currentUser);
   const navigation = useNavigation();
   const [hasInvestment] = useState(false);
 
+  useEffect(() => {}, []);
   return (
     !hasInvestment && (
       <View style={styles.noInvestment}>

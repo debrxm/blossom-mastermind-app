@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import { COLORS } from "../../constants/Colors";
-import { Width } from "../../constants/Layout";
+import { Height, Width } from "../../constants/Layout";
 
 export const styles = StyleSheet.create({
   tableHeadText: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(2),
   },
   tableRow: {
     flexDirection: "row",
@@ -15,7 +16,7 @@ export const styles = StyleSheet.create({
   tableText: {
     textTransform: "capitalize",
     fontWeight: "400",
-    fontSize: 13,
+    fontSize: responsiveFontSize(1.5),
     color: COLORS.black,
     width: (Width - 20) / 3,
     textAlign: "right",
@@ -34,6 +35,6 @@ export const styles = StyleSheet.create({
   tableFooterText: {
     textTransform: "capitalize",
     fontWeight: "600",
-    fontSize: 16,
+    fontSize: responsiveFontSize(2),
   },
 });

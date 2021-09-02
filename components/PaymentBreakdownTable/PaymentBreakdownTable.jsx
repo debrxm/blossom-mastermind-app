@@ -21,7 +21,7 @@ const PaymentBreakdownTable = ({ data }) => {
           <Text style={[styles.tableText, styles.tableHeadText]}>Return</Text>
         </View>
       </View>
-      <View style={[styles.tableBody, { height: Height * 0.4 }]}>
+      <View style={[styles.tableBody, { height: Height * 0.38 }]}>
         <FlatList
           contentContainerStyle={{}}
           showsHorizontalScrollIndicator={false}

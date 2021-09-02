@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { Paystack } from "react-native-paystack-webview";
 import { View } from "react-native";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import { paystackTestKeys } from "../../configs/apiKeys";
 import AppButton from "../AppButton/AppButton";
 import { COLORS } from "../../constants/Colors";
@@ -74,7 +75,7 @@ const PayWithPaystack = ({
         textStyle={{
           textTransform: "capitalize",
           fontWeight: "400",
-          fontSize: 15,
+          fontSize: responsiveFontSize(1.8),
           color: COLORS.white,
         }}
       />

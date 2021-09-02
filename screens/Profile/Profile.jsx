@@ -2,14 +2,13 @@ import {
   AntDesign,
   Entypo,
   Feather,
-  FontAwesome5,
   Ionicons,
   MaterialIcons,
-  Octicons,
 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import { View, Image, Share, Text, TouchableOpacity } from "react-native";
 import HelperDialog from "../../components/HelperDialog/HelperDialog";
 // import avatar from "../../assets/images/avatar.png";
@@ -129,7 +128,11 @@ const Profile = () => {
       <View style={styles.container}>
         <View style={styles.userPreview}>
           <View style={styles.userImageContainer}>
-            <Ionicons name="person-circle" size={100} color="#dddcdb" />
+            <Ionicons
+              name="person-circle"
+              size={responsiveFontSize(11)}
+              color="#dddcdb"
+            />
           </View>
           <View style={styles.usernameContainer}>
             <Text

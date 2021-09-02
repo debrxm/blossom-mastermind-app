@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import { useDispatch, useSelector } from "react-redux";
 import AppButton from "../../components/AppButton/AppButton";
 import RecommendedInvestmentPreview from "../../components/RecommendedInvestmentPreview/RecommendedInvestmentPreview";
@@ -51,7 +52,10 @@ const Home = () => {
             <Text
               style={[
                 styles.title,
-                { color: COLORS.lightTextColor, fontSize: 14 },
+                {
+                  color: COLORS.lightTextColor,
+                  fontSize: responsiveFontSize(1.8),
+                },
               ]}
             >
               {hour < 12
@@ -66,7 +70,7 @@ const Home = () => {
                 <Text
                   style={{
                     color: COLORS.darkTextColor,
-                    fontSize: 16,
+                    fontSize: responsiveFontSize(2.2),
                   }}
                 >
                   {user.first_name} {user.last_name.substring(0, 1)}.
@@ -124,7 +128,7 @@ const Home = () => {
                 textStyle={{
                   textTransform: "capitalize",
                   fontWeight: "400",
-                  fontSize: 12,
+                  fontSize: responsiveFontSize(1.8),
                   color: COLORS.tint,
                 }}
               />
@@ -159,7 +163,10 @@ const Home = () => {
                       style={[
                         styles.sectionContainerTitle,
                         styles.recommendedTitleText,
-                        { color: COLORS.tint, fontSize: 12 },
+                        {
+                          color: COLORS.tint,
+                          fontSize: responsiveFontSize(1.5),
+                        },
                       ]}
                     >
                       See all
@@ -194,7 +201,10 @@ const Home = () => {
                       style={[
                         styles.sectionContainerTitle,
                         styles.recommendedTitleText,
-                        { color: COLORS.tint, fontSize: 12 },
+                        {
+                          color: COLORS.tint,
+                          fontSize: responsiveFontSize(1.5),
+                        },
                       ]}
                     >
                       See all
@@ -231,7 +241,10 @@ const Home = () => {
                       style={[
                         styles.sectionContainerTitle,
                         styles.recommendedTitleText,
-                        { color: COLORS.tint, fontSize: 12 },
+                        {
+                          color: COLORS.tint,
+                          fontSize: responsiveFontSize(1.5),
+                        },
                       ]}
                     >
                       See all

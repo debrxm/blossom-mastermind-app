@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import { COLORS } from "../../constants/Colors";
 import { Height, Width } from "../../constants/Layout";
 
@@ -31,7 +32,7 @@ export const styles = StyleSheet.create({
     marginRight: "auto",
   },
   title: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(1.9),
     color: COLORS.darkTextColor,
   },
   imageContainer: {},
@@ -74,14 +75,14 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   walletMainTextLight: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(1.6),
     color: COLORS.cloudyWhite,
     textTransform: "uppercase",
     marginBottom: 10,
   },
   walletMainTextBold: {
     color: COLORS.white,
-    fontSize: 25,
+    fontSize: responsiveFontSize(3),
   },
   walletButtons: {
     flexDirection: "row",
@@ -104,7 +105,7 @@ export const styles = StyleSheet.create({
   sectionContainerTitle: {
     color: "#97989A",
     marginTop: 10,
-    fontSize: 15,
+    fontSize: responsiveFontSize(1.8),
     letterSpacing: 2,
     fontWeight: "600",
   },
@@ -130,7 +131,7 @@ export const styles = StyleSheet.create({
   investmentsTitleText: {
     color: "#111111",
     marginTop: 10,
-    fontSize: 15,
+    fontSize: responsiveFontSize(1.8),
     letterSpacing: 2,
     fontWeight: "600",
   },
@@ -183,6 +184,6 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     color: COLORS.black,
     letterSpacing: 0.05,
-    fontSize: 12,
+    fontSize: responsiveFontSize(1.5),
   },
 });

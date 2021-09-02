@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../constants/Colors";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
+import { COLORS, colors } from "../../constants/Colors";
+import { Height, Width } from "../../constants/Layout";
 
 export const styles = StyleSheet.create({
   container: {
@@ -55,5 +57,22 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 30,
     width: "40%",
+  },
+  buttonContainer: {
+    position: "absolute",
+    bottom: 100,
+    right: 20,
+    backgroundColor: "transparent",
+  },
+  button: {
+    flexDirection: "row",
+    backgroundColor: COLORS.tint,
+    elevation: 2,
+    alignItems: "center",
+    justifyContent: "center",
+    position: "relative",
+    height: Height * 0.08,
+    width: Width * 0.1,
+    borderRadius: 25,
   },
 });

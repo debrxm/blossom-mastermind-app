@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import { COLORS, colors } from "../../constants/Colors";
 
 export const styles = StyleSheet.create({
@@ -20,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   routeTitle: {
     color: "#111111",
-    fontSize: 16,
+    fontSize: responsiveFontSize(2),
     letterSpacing: 1,
   },
   userPreview: {
@@ -32,6 +33,7 @@ export const styles = StyleSheet.create({
   userImageContainer: {
     justifyContent: "center",
     alignItems: "center",
+    paddingLeft: 15,
     // paddingBottom: 20,
   },
   userImage: {
@@ -47,7 +49,7 @@ export const styles = StyleSheet.create({
   },
   username: {
     color: "#42414C",
-    fontSize: 18,
+    fontSize: responsiveFontSize(2.2),
     fontWeight: "600",
     // marginBottom: 5,
     marginLeft: -2,
@@ -61,7 +63,7 @@ export const styles = StyleSheet.create({
   },
   modalText: {
     color: "#111111",
-    fontSize: 14,
+    fontSize: responsiveFontSize(1.7),
   },
   invest: {
     flexDirection: "row",
@@ -83,11 +85,11 @@ export const styles = StyleSheet.create({
     minHeight: 100,
   },
   moneyLightText: {
-    fontSize: 10,
+    fontSize: responsiveFontSize(1.1),
     color: "#97989A",
   },
   moneyBoldText: {
-    fontSize: 20,
+    fontSize: responsiveFontSize(2),
     color: "#353535",
   },
   wallet: {
@@ -123,16 +125,16 @@ export const styles = StyleSheet.create({
     marginLeft: 10,
   },
   inviteTextMain: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(1.3),
     lineHeight: 20,
   },
   inviteTextSub: {
     lineHeight: 20,
     letterSpacing: 0.05,
-    fontSize: 10,
+    fontSize: responsiveFontSize(1.3),
   },
   inviteTextBold: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(1.3),
     color: colors[0],
   },
 });

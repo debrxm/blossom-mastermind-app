@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 import { COLORS } from "../../constants/Colors";
 import { Height, Width } from "../../constants/Layout";
 const boxHeight = Height * 0.27;
@@ -27,7 +28,7 @@ export const styles = StyleSheet.create({
     borderRadius: 25,
     elevation: 3,
   },
-  planText: { color: "#ffffff", fontSize: 10 },
+  planText: { color: "#ffffff", fontSize: responsiveFontSize(1.3) },
   productCardImageContainer: {
     borderRadius: 10,
     height: boxHeight * 0.3,
@@ -48,22 +49,22 @@ export const styles = StyleSheet.create({
   },
   cardInfoName: {
     color: COLORS.darkTextColor,
-    fontSize: 18,
+    fontSize: responsiveFontSize(2.5),
     marginVertical: 10,
   },
   cardInfoLightText: {
     color: "#97989A",
-    fontSize: 13,
+    fontSize: responsiveFontSize(1.3),
   },
   cardInfoDuration: {
     paddingTop: 0,
   },
   cardInfoDurationLightText: {
-    fontSize: 15,
+    fontSize: responsiveFontSize(1.8),
     color: COLORS.lightTextColor,
   },
   cardInfoDurationBoldText: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(1.9),
     color: COLORS.tint,
   },
   cardInfoCost: {
@@ -72,11 +73,11 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   cardInfoCostLightText: {
-    fontSize: 15,
+    fontSize: responsiveFontSize(1.8),
     color: COLORS.lightTextColor,
   },
   cardInfoCostBoldText: {
-    fontSize: 20,
+    fontSize: responsiveFontSize(2.2),
     color: COLORS.tint,
   },
   productCardFooter: {
