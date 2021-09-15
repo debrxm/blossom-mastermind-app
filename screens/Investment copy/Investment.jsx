@@ -27,7 +27,6 @@ const { width, height } = Dimensions.get("window");
 // const COLORS = { primary: "#ffffff", white: "#010101" };
 
 import { styles } from "./styles";
-import InvestmentPreview from "../../components/InvestmentPreview/InvestmentPreview";
 const slides = [
   {
     id: "1",
@@ -47,9 +46,6 @@ const Slide = ({ item }) => {
 };
 const Investment = () => {
   const user = useSelector(({ user }) => user.currentUser);
-  const investments = useSelector(
-    ({ investments }) => investments.activeInvestments
-  );
   const pending = useSelector(
     ({ investments }) => investments.pendingInvestments
   );
@@ -94,27 +90,20 @@ const Investment = () => {
         const elapsedInvestment = [];
         const pending = { status: false, count: 0 };
         snapShot.docs.forEach((item, index) => {
-          if (!item.data().confirmed) {
+          if (!item.data().confimed) {
             pending.status = true;
             pending.count++;
           }
-          activeInvestment.push(item.data());
-          // console.log(item.data());
-          // if (item.data().elapsed_date * 1 > Date.now()) {
-          //   activeInvestment.push(item.data);
-          // } else {
-          //   elapsedInvestment.push(item.data);
-          // }
-          dispatch(
-            setActiveInvestment(
-              activeInvestment.filter((item, index) => item.confirmed)
-            )
-          );
-          // if (index === snapShot.size - 1) {
-          //   dispatch(setPendingInvestment(pending));
-          //   dispatch(setActiveInvestment(activeInvestment));
-          //   dispatch(setElapsedInvestment(elapsedInvestment));
-          // }
+          if (item.data().elapsed_date * 1 > Date.now()) {
+            activeInvestment.push(item.data);
+          } else {
+            elapsedInvestment.push(item.data);
+          }
+          if (index === snapShot.size - 1) {
+            dispatch(setPendingInvestment(pending));
+            dispatch(setActiveInvestment(activeInvestment));
+            dispatch(setElapsedInvestment(elapsedInvestment));
+          }
         });
       }
     });
@@ -151,7 +140,7 @@ const Investment = () => {
           <View style={styles.walletButtons}>
             <AppButton
               title="Active"
-              onPress={() => {}}
+              onPress={() => onNavigateToActive()}
               customStyle={{
                 ...styles.walletBtn,
                 backgroundColor:
@@ -164,9 +153,33 @@ const Investment = () => {
                 color: currentSlideIndex == 0 ? COLORS.lightTint : COLORS.white,
               }}
             />
+            <AppButton
+              title="Elapsed"
+              onPress={() => onNavigateToElapsed()}
+              customStyle={{
+                ...styles.walletBtn,
+                backgroundColor:
+                  currentSlideIndex == 1 ? COLORS.white : COLORS.lightTint,
+              }}
+              textStyle={{
+                textTransform: "capitalize",
+                fontWeight: "400",
+                fontSize: 12,
+                color: currentSlideIndex == 1 ? COLORS.lightTint : COLORS.white,
+              }}
+            />
           </View>
         </View>
-        <ActiveInvestment />
+        <FlatList
+          ref={ref}
+          onMomentumScrollEnd={updateCurrentSlideIndex}
+          contentContainerStyle={{ height: height * 0.75 }}
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          data={slides}
+          pagingEnabled
+          renderItem={({ item, index }) => <Slide item={item} />}
+        />
       </ScrollView>
       <View style={{ ...styles.buttonContainer }}>
         {pending.status && (

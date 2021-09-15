@@ -32,7 +32,7 @@ const slides = [
 const Slide = ({ item }) => {
   return (
     <View style={{ alignItems: "center", justifyContent: "center" }}>
-      <View style={{ width: Width, alignItems: "center" }}>{item.data()}</View>
+      {/* <View style={{ width: Width, alignItems: "center" }}>{item.data()}</View> */}
     </View>
   );
 };

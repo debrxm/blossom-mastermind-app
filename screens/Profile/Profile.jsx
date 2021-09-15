@@ -80,51 +80,12 @@ const Profile = () => {
           </TouchableOpacity>
         </View>
         <Text style={styles.routeTitle}>Profile</Text>
-        {/* <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            width: 60,
-          }}
-        >
-          <TouchableOpacity
-            style={styles.circle}
-            onPress={() => setDialogVisible(true)}
-          >
-            <Feather name="more-vertical" size={20} color="black" />
-          </TouchableOpacity>
-        </View> */}
       </View>
       <HelperDialog
         visible={dialogVisible}
         setDialogVisible={setDialogVisible}
         title={"More"}
-      >
-        <TouchableOpacity
-          style={[styles.modalTextButton]}
-          onPress={handleSignout}
-        >
-          <AntDesign
-            name="edit"
-            size={20}
-            color="black"
-            style={{ marginRight: 20 }}
-          />
-          <Text style={[styles.modalText]}>Edit profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.modalTextButton]}
-          onPress={handleSignout}
-        >
-          <Feather
-            name="log-out"
-            size={20}
-            color="red"
-            style={{ marginRight: 20 }}
-          />
-          <Text style={[styles.modalText, { color: "red" }]}>Logout</Text>
-        </TouchableOpacity>
-      </HelperDialog>
+      ></HelperDialog>
       <View style={styles.container}>
         <View style={styles.userPreview}>
           <View style={styles.userImageContainer}>
@@ -141,9 +102,9 @@ const Profile = () => {
             <Text style={styles.username}>{user.phone}</Text>
           </View>
           <View style={{ marginLeft: "auto", marginRight: 20 }}>
-            <TouchableOpacity style={{ marginVertical: 6 }} onPress={() => {}}>
+            {/* <TouchableOpacity style={{ marginVertical: 6 }} onPress={() => {}}>
               <AntDesign name="edit" size={20} color="black" />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity
               style={{ marginVertical: 6 }}
               onPress={handleSignout}
@@ -185,8 +146,8 @@ const Profile = () => {
         <View style={styles.invite}>
           <Text style={styles.inviteTextMain}>Blossom Mastermind</Text>
           <Text style={styles.inviteTextSub}>Version 1.0.0</Text>
-          <Text style={styles.inviteTextSub}>From</Text>
-          <Text style={styles.inviteTextBold}>{user.refer_code || "XEAM"}</Text>
+          {/* <Text style={styles.inviteTextSub}>From</Text>
+          <Text style={styles.inviteTextBold}>{user.refer_code || "XEAM"}</Text> */}
         </View>
       </View>
     </>

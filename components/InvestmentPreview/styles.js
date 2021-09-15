@@ -3,7 +3,7 @@ import { responsiveFontSize } from "react-native-responsive-dimensions";
 import { COLORS } from "../../constants/Colors";
 import { Height, Width } from "../../constants/Layout";
 const boxHeight = Height * 0.35;
-const boxWidth = Width / 1.5;
+const boxWidth = Width / 1.2;
 export const styles = StyleSheet.create({
   recommenedCard: {
     width: boxWidth,
@@ -16,10 +16,11 @@ export const styles = StyleSheet.create({
     padding: 10,
     paddingTop: 0,
     alignItems: "center",
+    marginBottom: 12,
   },
   pattern: {
     height: "30%",
-    width: Width / 1.5,
+    width: boxWidth,
     borderRadius: 12,
   },
   recommenedCardImage: {
@@ -30,7 +31,7 @@ export const styles = StyleSheet.create({
 
   name: {
     textAlign: "center",
-    fontSize: responsiveFontSize(2.5),
+    fontSize: responsiveFontSize(3),
   },
   duration: {
     textAlign: "center",
@@ -42,7 +43,7 @@ export const styles = StyleSheet.create({
   },
   cost: {
     textAlign: "center",
-    fontSize: responsiveFontSize(2.8),
+    fontSize: responsiveFontSize(3.5),
     color: COLORS.tint,
   },
   roiContainer: {

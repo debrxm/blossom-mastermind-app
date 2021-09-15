@@ -112,6 +112,7 @@ export async function RegisterForPushNotificationsAsync() {
 
 export const SendNotification = (pushNotificationData) => {
   const { body, token, title } = pushNotificationData;
+  console.log(pushNotificationData);
   fetch("https://exp.host/--/api/v2/push/send", {
     method: "POST",
     headers: {

@@ -17,6 +17,7 @@ import Packages from "../screens/Packages/Packages";
 import Investment from "../screens/Investment/Investment";
 import About from "../screens/About/About";
 import PackageView from "../screens/PackageView/PackageView";
+import ConfirmedInvestmenntView from "../screens/UpdatePaymentDate/UpdatePaymentDate";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -302,6 +303,13 @@ function InvestmentScreenNavigator() {
       <ScreenStack.Screen
         name="PackageView"
         component={PackageView}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <ScreenStack.Screen
+        name="ConfirmedInvestmenntView"
+        component={ConfirmedInvestmenntView}
         options={{
           headerShown: false,
         }}

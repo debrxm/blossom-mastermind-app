@@ -5,8 +5,8 @@ import { Height, Width } from "../../constants/Layout";
 
 export const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // backgroundColor: "#fff",
+    flex: 1,
+    backgroundColor: "#fff",
   },
   header: {
     flexDirection: "row",
@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
   walletButtons: {
     flexDirection: "row",
     marginTop: "auto",
-    justifyContent: "center",
+    justifyContent: "space-between",
     width: "100%",
     paddingHorizontal: 10,
   },

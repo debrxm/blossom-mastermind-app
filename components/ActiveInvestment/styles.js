@@ -20,4 +20,11 @@ export const styles = StyleSheet.create({
     marginHorizontal: 3,
     borderRadius: 2,
   },
+  recommendation: {
+    flex: 1,
+  },
+  recommendations: {
+    paddingVertical: 10,
+    minHeight: 260,
+  },
 });
