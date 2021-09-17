@@ -152,7 +152,7 @@ const Notification = () => {
               contentContainerStyle={{
                 flexGrow: 1,
               }}
-              style={{ paddingBottom: 20 }}
+              style={{ paddingBottom: 20, height: Height * 0.8 }}
               initialNumToRender={10}
               onEndReachedThreshold={0.1}
               onMomentumScrollBegin={() => {

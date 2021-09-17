@@ -11,7 +11,7 @@ import BankDetailsForm from "../../components/BankDetailsForm/BankDetailsForm";
 import NextOfKinDetailsForm from "../../components/NextOfKinDetailsForm/NextOfKinDetailsForm";
 import PersonalDetailsForm from "../../components/PersonalDetailsForm/PersonalDetailsForm";
 import { COLORS } from "../../constants/Colors";
-import { Width } from "../../constants/Layout";
+import { Height, Width } from "../../constants/Layout";
 const { width } = Dimensions.get("window");
 
 import { styles } from "./styles";
@@ -32,7 +32,7 @@ const slides = [
 const Slide = ({ item }) => {
   return (
     <View style={{ alignItems: "center", justifyContent: "center" }}>
-      {/* <View style={{ width: Width, alignItems: "center" }}>{item.data()}</View> */}
+      <View style={{ width: Width, alignItems: "center" }}>{item.data()}</View>
     </View>
   );
 };
@@ -120,7 +120,7 @@ const CompleteAccountCreation = () => {
         <FlatList
           ref={ref}
           onMomentumScrollEnd={updateCurrentSlideIndex}
-          // contentContainerStyle={{ height: height * 0.25 }}
+          // contentContainerStyle={{ height: Height * 0.25 }}
           scrollEnabled={false}
           showsHorizontalScrollIndicator={false}
           horizontal

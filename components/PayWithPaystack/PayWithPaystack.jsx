@@ -22,6 +22,9 @@ const PayWithPaystack = ({
   useEffect(() => {});
   const cleanUp = () => {
     setSuccess(true);
+    setTimeout(() => {
+      setModalVisible(false);
+    }, 3000);
   };
   const paystackWebViewRef = useRef();
   const onSuccess = async (data) => {
@@ -30,9 +33,9 @@ const PayWithPaystack = ({
       trxref,
       amount,
     };
-    setModalVisible(true);
     try {
       OnPaymentSuccessful(user, trxData, investmentPackage, cleanUp);
+      setModalVisible(true);
     } catch (err) {
       setFailure(true);
       // "Ooops an error occured wallet no funded" + " " + err,

@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { responsiveFontSize } from "react-native-responsive-dimensions";
+import { firestore } from "../../firebase/config";
 import { useDispatch, useSelector } from "react-redux";
 import AppButton from "../../components/AppButton/AppButton";
 import RecommendedInvestmentPreview from "../../components/RecommendedInvestmentPreview/RecommendedInvestmentPreview";
@@ -21,17 +22,38 @@ import { styles } from "./styles";
 const Home = () => {
   const user = useSelector(({ user }) => user.currentUser);
   const hasNoty = useSelector(({ user }) => user.hasNoty);
+  const [isLoading, setIsLoading] = useState(true);
+  const [packages, setPackages] = useState([]);
   const [hasInvestment] = useState(false);
   const [hour, setHour] = useState(null);
   const navigation = useNavigation();
   const dispatch = useDispatch();
   useEffect(() => {
     getHour();
+    getPackages();
   });
   const getHour = () => {
     const date = new Date();
     const hour = date.getHours();
     setHour(hour);
+  };
+  const packagesRef = firestore.collection("packages");
+  const getPackages = async () => {
+    setIsLoading(true);
+    packagesRef.limit(3).onSnapshot((snapShot) => {
+      if (!snapShot.empty) {
+        let loadedPackages = [];
+        for (let index = 0; index < snapShot.docs.length; index++) {
+          const data = {
+            id: snapShot.docs[index].id,
+            ...snapShot.docs[index].data(),
+          };
+          loadedPackages.push(data);
+        }
+        setPackages(loadedPackages);
+      }
+    });
+    setIsLoading(false);
   };
   const resendVerificationLink = () => {
     auth.currentUser.sendEmailVerification();
@@ -257,9 +279,19 @@ const Home = () => {
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={styles.contentContainer}
                   >
-                    {Plans.map((item, index) => (
-                      <RecommendedInvestmentPreview key={index} data={item} />
-                    ))}
+                    {!packages.length
+                      ? Plans.map((item, index) => (
+                          <RecommendedInvestmentPreview
+                            key={index}
+                            data={item}
+                          />
+                        ))
+                      : packages.map((item, index) => (
+                          <RecommendedInvestmentPreview
+                            key={index}
+                            data={item}
+                          />
+                        ))}
                   </ScrollView>
                 </View>
               </View>
@@ -281,7 +313,7 @@ const Home = () => {
                     {user.email}
                   </Text>
                   <Text style={styles.tipTextLight}>
-                    Please verify you email to avoid any interruption
+                    Please verify your email to avoid any interruption
                   </Text>
                 </View>
                 <TouchableWithoutFeedback onPress={resendVerificationLink}>

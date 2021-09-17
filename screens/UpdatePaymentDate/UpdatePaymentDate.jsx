@@ -138,7 +138,7 @@ const ConfirmedInvestmenntView = () => {
             <Text
               style={[styles.planBoxLightText, { color: COLORS.cloudyWhite }]}
             >
-              {data.duration}
+              {data.duration} Months
             </Text>
           </View>
           <View

@@ -146,7 +146,7 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.cloudyWhite,
     padding: 10,
     position: "relative",
-    bottom: 80,
+    bottom: Height * 0.07,
   },
   tipImageContainer: {
     height: 45,
